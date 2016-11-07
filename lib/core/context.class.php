@@ -39,6 +39,9 @@ class context{
 	}
 
 	public function executeAction($action,$request){
+
+		//var_dump($request);// die();
+
 		$this->layout="layout";
 		if(!method_exists('mainController',$action))
 		  return false;

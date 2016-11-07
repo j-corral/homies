@@ -1,3 +1,5 @@
 .idea/
 
+lib/core/dbconnection.class.php
+
 */.DS_Store
