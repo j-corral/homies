@@ -62,7 +62,7 @@ class context{
 	}
 
 	/**
-	 * 
+	 *
 	 * @param $action
 	 *
 	 * @return string
