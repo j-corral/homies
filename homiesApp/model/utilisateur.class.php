@@ -8,7 +8,9 @@ class utilisateur{
 
 	/** @Id @Column(type="integer")
 	 *  @GeneratedValue
-	 */ 
+	 *  
+	 *  @OneToMany(targetEntity="fredouil.message", mappedBy="emetteur")
+	 */
 	public $id;
 
 	/** @Column(type="string", length=45) */ 

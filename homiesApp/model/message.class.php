@@ -11,7 +11,11 @@ class message{
 	 */ 
 	public $id;
 
-	/** @Column(type="integer") */
+	/** @Column(type="integer")
+	 *
+	 *  @ManyToOne(targetEntity="fredouil.utilisateur", inversedBy="id")
+	 *  @JoinColumn(name="emetteur_id", referencedColumnName="id")
+	*/
 	public $emetteur = null;
 
 	/** @Column(type="integer") */
