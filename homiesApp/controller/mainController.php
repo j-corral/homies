@@ -21,8 +21,6 @@ public static function index($request,$context){
 
 	public static function login($request,$context){
 
-		//var_dump("User ID:", $context->getSessionAttribute('user'));
-
 		if(isset($_POST) && !empty($_POST)) {
 			$context->post = $_POST;
 
@@ -30,23 +28,14 @@ public static function index($request,$context){
 			$password = $context->post['password'];
 
 			$user = utilisateurTable::getUserByLoginAndPass($login, $password);
-			//var_dump("USER", $user);
 
 
 			if($user != null) {
-				//var_dump("id:", $user->id);
 				$context->setSessionAttribute('user', $user->id);
-				$context->redirect('monApplication.php?=helloWorld');
+				$context->redirect($context->link('helloWorld'));
 			}
 
 		}
-
-
-		/*if(!$context->getSessionAttribute('user')) {
-
-			echo "Not logged";
-
-		}*/
 
 		return context::SUCCESS;
 	}

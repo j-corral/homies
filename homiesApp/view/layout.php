@@ -16,14 +16,18 @@
 		<div class="nav-wrapper container"><a id="logo-container" href="monApplication.php" class="brand-logo">Homies</a>
 			<ul class="right hide-on-med-and-down">
 				<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-					<li><a href=monApplication.php?action=logout>Logout</a></li>
+					<li><a href="<?= $context->link('logout'); ?>">Logout</a></li>
 				<?php else: ?>
-					<li><a href="monApplication.php?action=login">Login</a></li>
+					<li><a href="<?= $context->link('login'); ?>">Login</a></li>
 				<?php endif; ?>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a href="monApplication.php?action=login">Login</a></li>
+				<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+					<li><a href="<?= $context->link('logout'); ?>">Logout</a></li>
+				<?php else: ?>
+					<li><a href="<?= $context->link('login'); ?>">Login</a></li>
+				<?php endif; ?>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 		</div>

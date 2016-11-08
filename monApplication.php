@@ -1,5 +1,8 @@
 <?php
 
+// mode debug
+$debug = true;
+
 //nom de l'application
 $nameApp = "homiesApp";
 
@@ -7,6 +10,13 @@ $nameApp = "homiesApp";
 require_once 'lib/core.php';
 require_once $nameApp.'/controller/mainController.php';
 
+define('ROUTE', 'monApplication.php?action=');
+
+
+if($debug) {
+	ini_set ("display_errors", 1);
+	error_reporting (-1);
+}
 
 //action par défaut
 $action = "index";

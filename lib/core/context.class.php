@@ -60,8 +60,16 @@ class context{
 	public function setSessionAttribute($attribute,$value){
 		$_SESSION[$attribute]=$value;
 	}
-    
-	
+
+	/**
+	 * 
+	 * @param $action
+	 *
+	 * @return string
+	 */
+	public function link($action) {
+		return ROUTE . $action;
+	}
 	
 	public function __get($prop){
 		if(array_key_exists($prop, $this->data))        	
