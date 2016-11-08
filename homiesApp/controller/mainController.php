@@ -21,25 +21,43 @@ public static function index($request,$context){
 
 	public static function login($request,$context){
 
-		/*if(isset($_POST)) {
+		//var_dump("User ID:", $context->getSessionAttribute('user'));
+
+		if(isset($_POST) && !empty($_POST)) {
 			$context->post = $_POST;
 
-			var_dump("POST:", $context->post);
+			$login = $context->post['user'];
+			$password = $context->post['password'];
+
+			$user = utilisateurTable::getUserByLoginAndPass($login, $password);
+			//var_dump("USER", $user);
+
+
+			if($user != null) {
+				//var_dump("id:", $user->id);
+				$context->setSessionAttribute('user', $user->id);
+				$context->redirect('monApplication.php?=helloWorld');
+			}
+
+		}
+
+
+		/*if(!$context->getSessionAttribute('user')) {
+
+			echo "Not logged";
+
 		}*/
-
-		// change login and password
-		$login = 'user';
-		$password = 'pass';
-
-		$user = utilisateurTable::getUserByLoginAndPass($login, $password);
-
-		var_dump($user);
 
 		return context::SUCCESS;
 	}
 
 
 	public static function logout($request,$context){
+
+		$_SESSION = [ ];
+		session_destroy();
+
+		$context->redirect('monApplication.php');
 
 		return context::SUCCESS;
 	}

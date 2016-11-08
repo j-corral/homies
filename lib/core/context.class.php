@@ -39,7 +39,7 @@ class context{
 	}
 
 	public function executeAction($action,$request){
-
+		//var_dump($action);
 		//var_dump($request);// die();
 
 		$this->layout="layout";
