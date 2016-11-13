@@ -9,7 +9,7 @@ class mainController{
 
 public static function helloWorld($request,$context){
 
-	//var_dump($_SESSION['user']);
+	var_dump($_SESSION['user']);
 
 	echo "<pre>";
 	print_r(messageTable::getMessages());
@@ -32,17 +32,19 @@ public static function index($request,$context){
 
 	public static function login($request,$context){
 
+		if($context->getSessionAttribute('user') != null) {
+			$context->redirect($context->link('index'));
+		}
+
 		if(isset($_POST) && !empty($_POST)) {
-			$context->post = $_POST;
 
-			$login = $context->post['user'];
-			$password = $context->post['password'];
-
-			$user = utilisateurTable::getUserByLoginAndPass($login, $password);
+			$user = utilisateurTable::getUserByLoginAndPass($context->post->user, $context->post->password);
 
 			if($user != null) {
 				$context->setSessionAttribute('user', $user);
-				$context->redirect($context->link('helloWorld'));
+				$context->redirect($context->link('index'));
+			} else {
+				$context->setNotif('Login ou mot de passe invalide !', 3000, 'error');
 			}
 
 		}
@@ -53,10 +55,10 @@ public static function index($request,$context){
 
 	public static function logout($request,$context){
 
-		$_SESSION = [ ];
+		$_SESSION = [];
 		session_destroy();
 
-		$context->redirect('monApplication.php');
+		$context->redirect($context->link('login'));
 
 		return context::SUCCESS;
 	}

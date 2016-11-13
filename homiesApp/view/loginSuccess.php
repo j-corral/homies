@@ -4,8 +4,6 @@
 
 		<h3 class="col offset-s0 s12 offset-m2 m8 offset-l3 l6">Se connecter</h3>
 
-<!--		<input id="action" type="hidden" name="action" value="login">-->
-
 		<div class="row">
 			<div class="input-field col offset-s0 s12 offset-m2 m8 offset-l3 l6">
 				<i class="material-icons prefix">face</i>
@@ -21,7 +19,9 @@
 		</div>
 
 		<div class="row">
-			<input type="submit" value="Login">
+			<button class="btn light-blue lighten-1 waves-effect waves-light col offset-s7 s5 offset-m7 m3 offset-l6 l3">
+				<input type="submit" value="Login">
+			</button>
 			<!--<button id="submit" type="submit" name="action" class="btn light-blue lighten-1 waves-effect waves-light col offset-s7 s5 offset-m7 m3 offset-l6 l3">Login
 				<i class="material-icons right">send</i>
 			</button>-->

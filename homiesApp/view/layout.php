@@ -10,10 +10,23 @@
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="images/icon.png" />
+
+	<!-- App style -->
+	<link rel="stylesheet" href="css/app.css">
+
+	<!-- Customized forms -->
+	<link rel="stylesheet" href="css/forms.css">
+
 </head>
 <body>
 	<nav class="light-blue lighten-1" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="monApplication.php" class="brand-logo">Homies</a>
+		<div class="nav-wrapper container">
+			<a id="logo-container" href="<?= $context->link(''); ?>" class="brand-logo">
+				<img src="images/homies.png" alt="homies- Connecting people">
+			</a>
 			<ul class="right hide-on-med-and-down">
 				<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
 					<li><a href="<?= $context->link('logout'); ?>">Logout</a></li>
@@ -44,5 +57,7 @@
 
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+	<?php include('notification.php'); ?>
 </body>
 </html>

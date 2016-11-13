@@ -13,7 +13,7 @@ public static function getUserByLoginAndPass($login,$pass){
 	$user = $userRepository->findOneBy(array('identifiant' => $login, 'pass' => sha1($pass)));	
 	
 	if ($user == false){
-		echo 'Erreur sql';
+		//echo 'Erreur sql';
 	}
 	return $user; 
 }
