@@ -46,9 +46,6 @@
 		</div>
 	</nav>
 	<div class="container">
-		<!--<div id="notif">
-			<p>Etat : </p>
-		</div>-->
 		<?php include($template_view); ?>
 	</div>
 

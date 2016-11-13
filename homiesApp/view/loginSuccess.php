@@ -1,6 +1,6 @@
 <div class="row section">
 
-	<form id="User" method="post" action="monApplication.php?action=login">
+	<form id="User" method="post" action="<?= $context->link('login'); ?>">
 
 		<h3 class="col offset-s0 s12 offset-m2 m8 offset-l3 l6">Se connecter</h3>
 
@@ -22,9 +22,6 @@
 			<button class="btn light-blue lighten-1 waves-effect waves-light col offset-s7 s5 offset-m7 m3 offset-l6 l3">
 				<input type="submit" value="Login">
 			</button>
-			<!--<button id="submit" type="submit" name="action" class="btn light-blue lighten-1 waves-effect waves-light col offset-s7 s5 offset-m7 m3 offset-l6 l3">Login
-				<i class="material-icons right">send</i>
-			</button>-->
 		</div>
 	</form>
 </div>

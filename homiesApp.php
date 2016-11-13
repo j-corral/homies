@@ -10,8 +10,7 @@ $nameApp = "homiesApp";
 require_once 'lib/core.php';
 require_once $nameApp.'/controller/mainController.php';
 
-define('ROUTE', 'monApplication.php?action=');
-
+define('ROUTE', basename(__FILE__) . '?action=');
 
 if($debug) {
 	ini_set ("display_errors", 1);
