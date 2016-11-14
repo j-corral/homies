@@ -72,4 +72,26 @@ public static function index($request,$context){
 		return context::SUCCESS;
 	}
 
+
+	public static function showProfile($request, $context) {
+
+		$user = $context->checkLogin();
+
+		$context->user = utilisateurTable::getUserById($user->id);
+//		$context->user = utilisateurTable::getUsers();
+
+		return context::SUCCESS;
+	}
+
+
+	public static function showChat($request, $context) {
+
+		$user = $context->checkLogin();
+
+		//$context->chat = chatTable::getChats();
+		$context->chat = chatTable::getLastChat();
+
+		return context::SUCCESS;
+	}
+
 }

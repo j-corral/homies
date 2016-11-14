@@ -20,6 +20,7 @@ public static function getUserByLoginAndPass($login,$pass){
 
 
 	/**
+	 * Récupère un utilisateur
 	 * @author jonathan
 	 * @param $id
 	 *
@@ -38,8 +39,9 @@ public static function getUserByLoginAndPass($login,$pass){
 
 
 	/**
+	 * Récupère la liste des utilisateurs
 	 * @author jonathan
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getUsers() {
