@@ -142,6 +142,21 @@ class context{
 
 		return (object) $array;
 	}
+
+
+	/**
+	 * Vérifie qu'un utilisateur est connecté
+	 */
+	public function checkLogin() {
+
+		$user = $this->getSessionAttribute('user');
+
+		if ($user == null) {
+			$this->redirect($this->link('login'));
+		}
+
+		return $this->getSessionAttribute('user');
+	}
 	
 	public function __get($prop){
 		if(array_key_exists($prop, $this->data))        	

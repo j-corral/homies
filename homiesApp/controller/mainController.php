@@ -9,16 +9,6 @@ class mainController{
 
 public static function helloWorld($request,$context){
 
-	var_dump($_SESSION['user']);
-
-	echo "<pre>";
-	print_r(messageTable::getMessages());
-	echo "</pre> <hr>";
-
-	echo "<pre>";
-	print_r(postTable::getPosts());
-	echo "</pre>";
-
 	$context->mavariable="hello world";
 	return context::SUCCESS;
 }
@@ -64,6 +54,20 @@ public static function index($request,$context){
 		}
 
 		$context->redirect($context->link('login'));
+
+		return context::SUCCESS;
+	}
+
+
+	public static function showMessage($request, $context) {
+		
+		$user = $context->checkLogin();
+
+		$context->messages = messageTable::getMessages($user->id);
+
+		/*echo "<pre>";
+		print_r($messages);
+		echo "</pre> <hr>";*/
 
 		return context::SUCCESS;
 	}

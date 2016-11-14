@@ -6,13 +6,18 @@
 
 class messageTable {
 
-public static function getMessages(){
+public static function getMessages($id){
 	$em = dbconnection::getInstance()->getEntityManager() ;
 
 	$messageRepository = $em->getRepository('message');
 
-	$messages = $messageRepository->findAll();
-	
+	$messages = $messageRepository->findBy(array(
+		'emetteur' => $id
+	));
+
+	/*echo "<pre>";
+	print_r($messages);
+	echo "</pre>";*/
 
 	return $messages;
 }
