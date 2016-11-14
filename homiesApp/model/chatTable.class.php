@@ -6,17 +6,40 @@
 
 class chatTable {
 
-public static function getMessages(){
-	$em = dbconnection::getInstance()->getEntityManager() ;
+	/**
+	* Récupère la totalité des chats
+	* 
+	* @author Kenny
+	* 
+	* @return $chats
+	*/
+	public static function getChats(){
+		$em = dbconnection::getInstance()->getEntityManager() ;
 
-	$messageRepository = $em->getRepository('chat');
+		$messageRepository = $em->getRepository('chat');
 
-	$messages = $messageRepository->findAll();
-	
+		$chats = $messageRepository->findAll();
 
-	return $messages;
-}
+		return $chats;
+	}
 
+	/**
+	* Récupère la totalité des chats
+	* 
+	* @author Kenny
+	* 
+	* @return $chats
+	*/
+	public static function getLastChat(){
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$messageRepository = $em->getRepository('chat');
+
+
+		$last = $messageRepository->findBy(array(), array('id' => 'DESC'), 1);
+
+		return $last;
+	}
 
 }
 
