@@ -12,7 +12,7 @@ class post{
 	public $id;
 
 	/** @Column(type="string", length=2000) */
-	public $text;
+	public $texte;
 		
 	/** @Column(type="datetime") */
 	public $date;

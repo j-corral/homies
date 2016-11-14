@@ -11,24 +11,32 @@ class message{
 	 */ 
 	public $id;
 
-	/** @Column(type="integer")
-	 *
-	 *  @ManyToOne(targetEntity="fredouil.utilisateur", inversedBy="id")
-	 *  @JoinColumn(name="emetteur_id", referencedColumnName="id")
+	/**
+	 *  @OneToOne(targetEntity="utilisateur")
+	 *  @JoinColumn(name="emetteur", referencedColumnName="id")
 	*/
-	public $emetteur = null;
+	public $emetteur;
+
+	/**
+	 *  @OneToOne(targetEntity="utilisateur")
+	 *  @JoinColumn(name="destinataire", referencedColumnName="id", nullable=true)
+	 */
+	public $destinataire;
+
+	/**
+	 *  @OneToOne(targetEntity="utilisateur")
+	 *  @JoinColumn(name="parent", referencedColumnName="id")
+	 */
+	public $parent;
+
+	/**
+	 *  @OneToOne(targetEntity="post")
+	 *  @JoinColumn(name="post", referencedColumnName="id")
+	 */
+	public $post;
 
 	/** @Column(type="integer") */
-	public $destinataire = null;
-
-	/** @Column(type="integer") */
-	public $parent = null;
-
-	/** @Column(type="integer") */
-	public $post = null;
-
-	/** @Column(type="integer") */
-	public $aime = null;
+	public $aime;
 	
 }
 

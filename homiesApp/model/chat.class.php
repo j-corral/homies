@@ -11,15 +11,18 @@ class chat{
 	 */ 
 	public $id;
 
-	/** @Column(type="integer")
-	 *
+	/**
+	 *  @OneToOne(targetEntity="post")
+	 *  @JoinColumn(name="post", referencedColumnName="id")
 	 */
-	public $post = null;
+	public $post;
 
-	/** @Column(type="integer")
+	/**
+	 *  @OneToOne(targetEntity="post")
+	 *  @JoinColumn(name="emetteur", referencedColumnName="id")
 	 *
 	*/
-	public $emetteur = null;
+	public $emetteur;
 
 
 	
