@@ -7,7 +7,7 @@
 class chatTable {
 
 	/**
-	* Récupère la totalité des chats
+	* Récupère la totalité des messages postés sur le chat
 	* 
 	* @author Kenny
 	* 
@@ -24,11 +24,11 @@ class chatTable {
 	}
 
 	/**
-	* Récupère la totalité des chats
+	* Récupère le dernier message du chat
 	* 
 	* @author Kenny
 	* 
-	* @return $chats
+	* @return $last
 	*/
 	public static function getLastChat(){
 		$em = dbconnection::getInstance()->getEntityManager() ;
