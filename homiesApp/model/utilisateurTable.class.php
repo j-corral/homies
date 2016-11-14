@@ -19,6 +19,41 @@ public static function getUserByLoginAndPass($login,$pass){
 }
 
 
+	/**
+	 * @author jonathan
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
+	public static function getUserById($id) {
+
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$userRepository = $em->getRepository('utilisateur');
+
+		$user = $userRepository->findOneById($id);
+
+		return $user;
+	}
+
+
+	/**
+	 * @author jonathan
+	 * 
+	 * @return array
+	 */
+	public static function getUsers() {
+
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$userRepository = $em->getRepository('utilisateur');
+
+		$users = $userRepository->findAll();
+
+		return $users;
+	}
+
+
 }
 
 ?>
