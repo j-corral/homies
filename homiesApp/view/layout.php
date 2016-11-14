@@ -29,7 +29,8 @@
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-					<li><a href="<?= $context->link('logout'); ?>">Logout</a></li>
+					<li><a id="logout" href="<?= $context->link('logout'); ?>">Logout</a></li>
+<!--					<li><a id="logout">Logout</a></li>-->
 				<?php else: ?>
 					<li><a href="<?= $context->link('login'); ?>">Login</a></li>
 				<?php endif; ?>
@@ -54,6 +55,8 @@
 
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="js/app.js"></script>
 
 	<?php include('notification.php'); ?>
 </body>

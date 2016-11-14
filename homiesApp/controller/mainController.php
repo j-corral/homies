@@ -58,6 +58,11 @@ public static function index($request,$context){
 		$_SESSION = [];
 		session_destroy();
 
+		if($request['ajax']) {
+			$context->ajax = 'Vous êtes maintenant déconnecté !';
+			return context::NONE;
+		}
+
 		$context->redirect($context->link('login'));
 
 		return context::SUCCESS;
