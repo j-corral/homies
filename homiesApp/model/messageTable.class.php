@@ -13,9 +13,16 @@ class messageTable {
 
 		$messages = $messageRepository->findByDestinataire($id);
 
-		/*echo "<pre>";
-		print_r($messages);
-		echo "</pre>";*/
+		return $messages;
+	}
+
+
+	public static function getMessagesByEmetteur($id){
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$messageRepository = $em->getRepository('message');
+
+		$messages = $messageRepository->findByEmetteur($id);
 
 		return $messages;
 	}

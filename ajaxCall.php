@@ -1,5 +1,11 @@
 <?php
 
+$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
+strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+if(!$isAjax) {
+	trigger_error('Access denied - not an AJAX request...', E_USER_ERROR);
+}
+
 // mode debug
 $debug = false;
 

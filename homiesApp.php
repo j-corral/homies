@@ -12,6 +12,12 @@ require_once $nameApp.'/controller/mainController.php';
 
 define('ROUTE', basename(__FILE__) . '?action=');
 
+define('DS', DIRECTORY_SEPARATOR);
+
+define('IMG', 'images');
+
+define('AVATAR', 'default-avatar.png');
+
 if($debug) {
 	ini_set ("display_errors", 1);
 	error_reporting (-1);

@@ -65,10 +65,6 @@ public static function index($request,$context){
 
 		$context->messages = messageTable::getMessages($user->id);
 
-		/*echo "<pre>";
-		print_r($messages);
-		echo "</pre> <hr>";*/
-
 		return context::SUCCESS;
 	}
 
@@ -78,7 +74,12 @@ public static function index($request,$context){
 		$user = $context->checkLogin();
 
 		$context->user = utilisateurTable::getUserById($user->id);
-//		$context->user = utilisateurTable::getUsers();
+
+		if(empty($context->user->avatar)) {
+			$context->user->avatar = 'images/default-avatar.png';
+		}
+
+		$context->messages = messageTable::getMessagesByEmetteur($user->id);
 
 		return context::SUCCESS;
 	}

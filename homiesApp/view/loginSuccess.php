@@ -1,6 +1,6 @@
-<div class="row section">
+<!--<div class="row section">
 
-	<form id="User" method="post" action="<?= $context->link('login'); ?>">
+	<form id="User" method="post" action="<?/*= $context->link('login'); */?>">
 
 		<h3 class="col offset-s0 s12 offset-m2 m8 offset-l3 l6">Se connecter</h3>
 
@@ -24,4 +24,40 @@
 			</button>
 		</div>
 	</form>
+</div>-->
+
+
+<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+	<div class="card card-signup">
+		<form class="form" method="post" action="<?= $context->link('login'); ?>">
+			<div class="content">
+
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="material-icons">face</i>
+					</span>
+					<div class="form-group form-info label-floating is-empty">
+						<label class="control-label">Nom d'utilisateur</label>
+						<input type="text" name="user" class="form-control">
+						<span class="material-input"></span>
+					</div>
+				</div>
+
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="material-icons">lock_outline</i>
+					</span>
+					<div class="form-group form-info label-floating is-empty">
+						<label class="control-label">Mot de passe</label>
+						<input type="password" name="password" class="form-control">
+						<span class="material-input"></span>
+					</div>
+				</div>
+
+			</div>
+			<div class="footer text-center">
+				<input type="submit" class="btn btn-info btn-simple btn-wd btn-lg"  value="Se connecter"/>
+			</div>
+		</form>
+	</div>
 </div>

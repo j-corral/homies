@@ -89,13 +89,16 @@ class context{
 
 		$_SESSION['notif']['message'] = $msg;
 		$_SESSION['notif']['duration'] = (int) $duration;
+		$_SESSION['notif']['icon'] = 'info_outline';
 
 		if($type == 'success') {
-			$_SESSION['notif']['type'] = ' teal accent-4 ';
+			$_SESSION['notif']['type'] = '-success ';
+			$_SESSION['notif']['icon'] = 'done';
 		} elseif ($type == 'error') {
-			$_SESSION['notif']['type'] = ' red ';
+			$_SESSION['notif']['type'] = '-danger ';
+			$_SESSION['notif']['icon'] = 'error_outline';
 		} else {
-			$_SESSION['notif']['type'] = ' blue ';
+			$_SESSION['notif']['type'] = '-info ';
 		}
 
 	}
