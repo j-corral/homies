@@ -1,18 +1,16 @@
-<div class="cd-section">
+<!--<div class="cd-section">
 	<div class="row">
 		<div class="tim-typo">
 			<h2 class="title">Mon profil</h2>
 		</div>
 	</div>
-</div>
+</div>-->
 <div class="section">
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-profile">
 				<div class="card-avatar">
-					<a href="">
-						<img class="img-rounded img-responsive" src="<?= $context->user->avatar; ?>">
-					</a>
+					<img class="img-rounded img-responsive" src="<?= $context->user->avatar; ?>">
 				</div>
 
 				<div class="content">
@@ -24,7 +22,9 @@
 						<strong>Statut : </strong>
 						<?= $context->user->statut ?>
 					</p>
+					<?php if($context->edit): ?>
 					<a href="<?= $context->link( '' ) ?>" class="btn btn-info btn-round">Modifier</a>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

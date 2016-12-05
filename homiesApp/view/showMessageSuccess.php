@@ -47,15 +47,15 @@
 </div>
 </div>
 <hr>
-<?php foreach ( $context->messages as $message ): ?>
-	<div>
+<?php //foreach ( $context->messages as $message ): ?>
+	<!--<div>
 		<p>Message du
-			user: <?= $message->emetteur->prenom; ?> <?= $message->emetteur->nom; ?> <?= $message->id; ?> <?= $message->post->date->format( "d-m-Y" ); ?></p>
-		<p>--> <?= $message->post->texte; ?> ecrit
-			par <?= $message->emetteur->prenom; ?> <?= $message->emetteur->nom; ?> à destination
-			de <?= $message->destinataire->prenom; ?> <?= $message->destinataire->nom; ?> (le parent étant
-			: <?= $message->parent->id; ?>)</p>
+			<!--user: <?/*= $message->emetteur->prenom; */?> <?/*= $message->emetteur->nom; */?> <?/*= $message->id; */?> <?/*= $message->post->date->format( "d-m-Y" ); */?></p>
+		<p> <?/*= $message->post->texte; */?> ecrit
+			par <?/*= $message->emetteur->prenom; */?> <?/*= $message->emetteur->nom; */?> à destination
+			de <?/*= $message->destinataire->prenom; */?> <?/*= $message->destinataire->nom; */?> (le parent étant
+			: <?/*= $message->parent->id; */?>)</p>-->
 	</div>
-	<hr>
-<?php endforeach; ?>
+	<hr>-->
+<?php //endforeach; ?>
 

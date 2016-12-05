@@ -73,13 +73,21 @@ public static function index($request,$context){
 
 		$user = $context->checkLogin();
 
-		$context->user = utilisateurTable::getUserById($user->id);
+		$user_id = isset($request['id']) ? (int) $request['id'] : $user->id;
+
+		$context->user = utilisateurTable::getUserById($user_id);
+
+		if(is_null($context->user)) {
+			return context::ERROR;
+		}
 
 		if(empty($context->user->avatar)) {
 			$context->user->avatar = 'images/default-avatar.png';
 		}
 
-		$context->messages = messageTable::getMessagesByEmetteur($user->id);
+		$context->messages = messageTable::getMessagesByEmetteur($user_id);
+
+		$context->edit = $user_id == $user->id;
 
 		return context::SUCCESS;
 	}
