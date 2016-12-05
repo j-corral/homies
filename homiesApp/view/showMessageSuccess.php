@@ -10,7 +10,7 @@
 	<div class="col-md-8">
 		<?php foreach ( $context->messages as $message ) : ?>
 			<div class="card">
-				<?php if(!empty($message->post->image)): ?>
+				<?php if($context->isPicture): ?>
 				<div class="card-image">
 					<img src="<?= $message->post->image; ?>" alt="" class="img">
 				</div>
@@ -46,7 +46,7 @@
 
 </div>
 </div>
-<hr>
+<!--<hr>
 <?php //foreach ( $context->messages as $message ): ?>
 	<!--<div>
 		<p>Message du
@@ -55,7 +55,7 @@
 			par <?/*= $message->emetteur->prenom; */?> <?/*= $message->emetteur->nom; */?> à destination
 			de <?/*= $message->destinataire->prenom; */?> <?/*= $message->destinataire->nom; */?> (le parent étant
 			: <?/*= $message->parent->id; */?>)</p>-->
-	</div>
+	<!--</div>
 	<hr>-->
 <?php //endforeach; ?>
 
