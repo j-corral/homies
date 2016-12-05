@@ -38,6 +38,11 @@
 							<i class="material-icons">account_circle</i> <?= $context->getSessionAttribute('user')->prenom; ?>
 						</a>
 					</li>
+					<li>
+						<a href="<?= $context->link('showFriends'); ?>">
+							<i class="material-icons">group_add</i> Amis
+						</a>
+					</li>
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

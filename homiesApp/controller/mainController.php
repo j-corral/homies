@@ -109,4 +109,18 @@ public static function index($request,$context){
 		return context::SUCCESS;
 	}
 
+
+	public static function showFriends($request, $context) {
+
+		$user = $context->checkLogin();
+
+		$context->user = $user;
+
+		$context->users = utilisateurTable::getUsers();
+
+		$context->avatar = 'images/default-avatar.png';
+
+		return context::SUCCESS;
+	}
+
 }

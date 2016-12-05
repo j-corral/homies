@@ -38,7 +38,11 @@ $view=$context->executeAction($action, $_REQUEST);
 
 //traitement des erreurs de bases, reste a traiter les erreurs d'inclusion
 if($view===false){
-	echo "Une grave erreur s'est produite, il est probable que l'action ".$action." n'existe pas...";
+	//echo "Une grave erreur s'est produite, il est probable que l'action ".$action." n'existe pas...";
+
+	$template_view=$nameApp."/view/errors/404Error.php";
+	include($nameApp."/view/".$context->getLayout().".php");
+
 	die;
 }
 
