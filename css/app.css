@@ -68,3 +68,44 @@
     display: block;
     z-index: 99999;
 }
+
+/* Profile page */
+
+.icon-min {
+    font-size: 18px;
+}
+
+.div-btn-actions {
+    /*padding: 5px 10px;*/
+    border-top: 1px solid lightgrey;
+}
+
+.button-action {
+    margin: 0 5px!important;
+    padding: 8px 15px;
+    border-radius: 3px!important;
+    background-color: #00bcd4!important;
+}
+
+.label-btn-action {
+    margin-right : 10px;
+}
+
+.div-btn-actions .content {
+    padding: 0;
+}
+
+.div-btn-actions .btn-group {
+    float: left;
+}
+
+.div-btn-actions .content-date {
+    color: #000!important;
+    padding-right: 20px;
+    line-height: 60px;
+    float: right;
+}
+
+.div-btn-actions .material-icons, .div-btn-actions .label-btn-action {
+    color : #fff;
+}

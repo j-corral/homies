@@ -31,7 +31,7 @@
 									<?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
 								</span>
 							</a>
-							<i class="material-icons">play_arrow</i>
+							<i class="material-icons icon-min">play_arrow</i>
 							<a href="">
 								<span>
 									<?= ucfirst( $message->destinataire->prenom ) ?> <?= ucfirst( $message->destinataire->nom ) ?>
@@ -39,6 +39,31 @@
 							</a>
 						</div>
 					</div>
+				</div>
+
+				<div class="div-btn-actions">
+					<div class="content btn-action btn-group" role="group" aria-label="...">
+						<button type="button" class="btn btn-default button-action">
+							<a href="">
+								<label class="label-btn-action">Like</label>
+								<i class="material-icons">thumb_up</i>
+							</a>
+						</button>
+						<button type="button" class="btn btn-default button-action">
+							<a href="">
+								<label class="label-btn-action">Comment</label>
+								<i class="material-icons">comment</i>
+							</a>
+						</button>
+						<button type="button" class="btn btn-default button-action">
+							<a href="">
+								<label class="label-btn-action">Share</label>
+								<i class="material-icons">share</i>
+							</a>
+						</button>
+					</div>
+
+					<span class="content content-date">Posté le <?= date_format($message->post->date, 'd-m-Y'); ?></span>
 				</div>
 			</div>
 		<?php endforeach; ?>
