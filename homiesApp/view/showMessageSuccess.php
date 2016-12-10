@@ -63,7 +63,7 @@
 						</button>
 					</div>
 
-					<span class="content content-date">Posté le <?= date_format($message->post->date, 'd-m-Y'); ?></span>
+					<span class="content content-date">Posté le <?= date_format($message->post->date, 'j M. à H:i'); ?></span>
 				</div>
 			</div>
 		<?php endforeach; ?>
