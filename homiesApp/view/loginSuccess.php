@@ -36,9 +36,9 @@
 					<span class="input-group-addon">
 						<i class="material-icons">face</i>
 					</span>
-					<div class="form-group form-info label-floating is-empty">
+					<div class="form-group form-info label-floating is-focused">
 						<label class="control-label">Nom d'utilisateur</label>
-						<input type="text" name="user" class="form-control">
+						<input type="text" autofocus name="user" class="form-control">
 						<span class="material-input"></span>
 					</div>
 				</div>
@@ -56,7 +56,7 @@
 
 			</div>
 			<div class="footer text-center">
-				<input type="submit" class="btn btn-info btn-simple btn-wd btn-lg"  value="Se connecter"/>
+				<input type="submit" class="btn btn-info btn-round"  value="Se connecter"/>
 			</div>
 		</form>
 	</div>
