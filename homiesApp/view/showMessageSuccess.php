@@ -24,7 +24,7 @@
 					</p>
 					<div class="footer">
 						<div class="author">
-							<a href="">
+							<a href="<?= $context->link( 'showProfile&id=' . $message->emetteur->id ) ?>">
 								<?php if(!empty($message->emetteur->avatar)): ?>
 									<img class="avatar img-rounded" src="<?= $message->emetteur->avatar; ?>">
 								<?php else: ?>
@@ -35,7 +35,7 @@
 								</span>
 							</a>
 							<i class="material-icons icon-min">play_arrow</i>
-							<a href="">
+                            <a href="<?= $context->link( 'showProfile&id=' . $message->destinataire->id ) ?>">
 								<span>
 									<?= ucfirst( $message->destinataire->prenom ) ?> <?= ucfirst( $message->destinataire->nom ) ?>
 								</span>
