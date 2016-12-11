@@ -114,7 +114,7 @@ class context{
 
 
 
-	protected function sanitize(array $data) {
+	public function sanitize(array $data) {
 
 		if(!is_array($data)) {
 			return filter_var($data, FILTER_SANITIZE_STRING);

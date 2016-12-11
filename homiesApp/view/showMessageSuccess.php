@@ -8,7 +8,10 @@
 <div class="section">
 
 	<div class="col-md-8">
-		<?php foreach ( $context->messages as $message ) : ?>
+        <?php foreach ( $context->messages as $message ) :
+
+        if ( isset($message->destinataire->prenom) && isset($message->destinataire->nom) ) {
+        ?>
 			<div class="card">
 				<?php if($context->isPicture): ?>
 				<div class="card-image">
@@ -63,10 +66,11 @@
 						</button>
 					</div>
 
-					<span class="content content-date">Posté le <?= date_format($message->post->date, 'j M. à H:i'); ?></span>
+					<span class="content content-date">Posté le <?= $message->post->date->format('j M. à H:i'); ?></span>
 				</div>
 			</div>
-		<?php endforeach; ?>
+		<?php }
+        endforeach; ?>
 	</div>
 
 </div>
