@@ -5,6 +5,7 @@
 		</div>
 	</div>
 </div>-->
+<div class="parallax"></div>
 <div class="section">
 	<div class="row">
 		<div class="col-md-4">
@@ -109,17 +110,17 @@
 						</p>
 						<div class="footer">
 							<div class="author">
-								<a href="">
+                                <a href="<?= $context->link( 'showProfile&id=' . $message->emetteur->id ) ?>">
 									<img class="avatar img-raised" src="<?= $context->user->avatar; ?>">
 									<span>
 										<?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
 									</span>
 								</a>
 								<i class="material-icons icon-min">play_arrow</i>
-								<a href="">
-								<span>
-									<?= ucfirst( $message->destinataire->prenom ) ?> <?= ucfirst( $message->destinataire->nom ) ?>
-								</span>
+                                <a href="<?= $context->link( 'showProfile&id=' . $message->destinataire->id ) ?>">
+                                    <span>
+                                        <?= ucfirst( $message->destinataire->prenom ) ?> <?= ucfirst( $message->destinataire->nom ) ?>
+                                    </span>
 								</a>
 							</div>
 						</div>
