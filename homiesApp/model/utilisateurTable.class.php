@@ -56,6 +56,25 @@ public static function getUserByLoginAndPass($login,$pass){
 	}
 
 
+	public static function updateStatus($id, $status) {
+
+		$em = dbconnection::getInstance()->getEntityManager() ;
+		$userRepository = $em->getRepository('utilisateur');
+
+		$user = $userRepository->findOneById($id);
+
+		if(empty($user)) {
+			return false;
+		}
+
+		$user->statut = $status;
+		$em->persist($user);
+		$em->flush();
+
+		return true;
+	}
+
+
 }
 
 ?>

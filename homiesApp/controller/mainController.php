@@ -99,6 +99,24 @@ public static function index($request,$context){
 	}
 
 
+	public static function updateStatus($request, $context) {
+
+		$user = $context->checkLogin();
+
+		if(!isset($context->post->status) || empty($context->post->status)) {
+			return context::ERROR;
+		}
+
+		$update = utilisateurTable::updateStatus($user->id, $context->post->status);
+
+		$context->redirect($context->link('showProfile'));
+
+		$context->setNotif("Votre statut a bien été modifié :)");
+
+		return context::NONE;
+	}
+
+
 	public static function showChat($request, $context) {
 
 		$user = $context->checkLogin();

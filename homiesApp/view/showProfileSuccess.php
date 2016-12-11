@@ -18,12 +18,31 @@
 
 					<h4 class="card-title"><?= ucfirst( $context->user->prenom ) ?> <?= ucfirst( $context->user->nom ) ?></h4>
 
-					<p class="card-description">
-						<strong>Statut : </strong>
-						<?= $context->user->statut ?>
-					</p>
-					<?php if($context->edit): ?>
-					<a href="<?= $context->link( '' ) ?>" class="btn btn-info btn-round">Modifier</a>
+					<?php if ( $context->edit ): ?>
+						<form method="post" action="<?= $context->link('updateStatus'); ?>">
+							<div class="content">
+
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">face</i>
+									</span>
+									<div class="form-group form-info label-floating is-focused">
+										<label class="control-label">Statut</label>
+										<input type="text" name="status" placeholder="Indiquez votre état"
+										       value="<?= $context->user->statut ?>" class="form-control">
+										<span class="material-input"></span>
+									</div>
+								</div>
+							</div>
+							<div class="footer">
+								<input type="submit" class="btn btn-info btn-round" value="Modifier"/>
+							</div>
+						</form>
+					<?php else: ?>
+						<i class="material-icons left">face</i>
+						<span class="card-description text-info">
+							<?= $context->user->statut ?>
+						</span>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -70,7 +89,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="div-btn-actions">
 						<div class="content btn-action btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-default button-action">
@@ -93,7 +112,8 @@
 							</button>
 						</div>
 
-						<span class="content content-date">Posté le <?= date_format($message->post->date, 'j M. à H:i'); ?></span>
+						<span
+							class="content content-date">Posté le <?= date_format( $message->post->date, 'j M. à H:i' ); ?></span>
 					</div>
 				</div>
 			<?php endforeach; ?>
