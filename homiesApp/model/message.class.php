@@ -37,7 +37,23 @@ class message{
 
 	/** @Column(type="integer") */
 	public $aime;
-	
+
+	/**
+	 * message constructor.
+	 *
+	 * @param $emetteur
+	 * @param $destinataire
+	 * @param $post
+	 */
+	public function __construct( $emetteur, $destinataire, $post ) {
+		$this->emetteur     = $emetteur;
+		$this->destinataire = $destinataire;
+		$this->post         = $post;
+		$this->parent       = $emetteur;
+		$this->aime         = 0;
+	}
+
+
 }
 
 ?>

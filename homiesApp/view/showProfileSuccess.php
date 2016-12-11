@@ -57,11 +57,17 @@
 						Poster un message
 					</h3>
 
-					<div class="form-group form-info is-empty">
-						<textarea class="form-control" placeholder="Ecrivez quelque chose ici..." rows="6"></textarea>
-						<span class="material-input"></span>
-					</div>
-					<a href="" class="btn btn-info pull-right">Poster</a>
+					<form method="post" action="<?= $context->link("postMessage") ?>">
+
+						<input type="hidden" name="destinataire" value="<?= $context->user->id ?>">
+
+						<div class="form-group form-info is-empty">
+							<textarea name="message" class="form-control" placeholder="Ecrivez quelque chose ici..." rows="6"></textarea>
+							<span class="material-input"></span>
+						</div>
+
+						<input type="submit" class="btn btn-info pull-right" value="Poster"/>
+					</form>
 				</div>
 			</div>
 

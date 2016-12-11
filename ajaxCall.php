@@ -49,7 +49,7 @@ if($view != context::NONE){
 	echo json_encode($msg);
 	exit;
 } else {
-	$context->setNotif('Success !', 2000, 'success');
+	$context->setNotif('Success !', 'success', 2000);
 
 	header( 'Cache-Control: no-cache, must-revalidate' );
 	header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );

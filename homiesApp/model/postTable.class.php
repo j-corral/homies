@@ -18,6 +18,23 @@ public static function getPosts(){
 }
 
 
+public static function createPost($message, $image = '') {
+
+	$em = dbconnection::getInstance()->getEntityManager() ;
+
+	$post = new post($message);
+
+	if($image != '') {
+		$post->setImage($image);
+	}
+
+	$em->persist($post);
+	$em->flush();
+
+	return $post;
+}
+
+
 }
 
 ?>
