@@ -18,6 +18,10 @@ define('IMG', 'images');
 
 define('AVATAR', 'default-avatar.png');
 
+define('UPLOADS', 'uploads');
+
+define('UPLOADS_LINK', 'https://' . $_SERVER["HTTP_HOST"] . $_SERVER['CONTEXT_PREFIX'] . '/' . UPLOADS);
+
 if($debug) {
 	ini_set ("display_errors", 1);
 	error_reporting (-1);

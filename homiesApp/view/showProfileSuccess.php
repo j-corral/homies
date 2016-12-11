@@ -57,7 +57,7 @@
 						Poster un message
 					</h3>
 
-					<form method="post" action="<?= $context->link("postMessage") ?>">
+					<form method="post" enctype="multipart/form-data" action="<?= $context->link("postMessage") ?>">
 
 						<input type="hidden" name="destinataire" value="<?= $context->user->id ?>">
 
@@ -66,7 +66,33 @@
 							<span class="material-input"></span>
 						</div>
 
-						<input type="submit" class="btn btn-info pull-right" value="Poster"/>
+						<div class="row">
+							<div class="form-group">
+
+								<div class="fileinput text-center fileinput-new pull-left" data-provides="fileinput">
+									<div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 50%;"></div>
+									<div>
+
+										<button type="button" rel="tooltip" class="btn btn-info" data-original-title="Selectionner une image" data-placement="bottom" title="">
+											<i class="material-icons">add_a_photo</i>
+											<div class="ripple-container"></div>
+											<span class="fileinput-exists">Modifier</span>
+											<input type="hidden" value="" name="picture">
+											<input type="file" name="file" accept="image/*">
+											<div class="ripple-container"></div>
+										</button>
+
+										<a class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Supprimer<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 43.5625px; top: 8.40625px; background-color: rgb(255, 255, 255); transform: scale(15.625);"></div></div></a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="row">
+							<input type="submit" class="btn btn-info pull-right" value="Poster"/>
+						</div>
+
 					</form>
 				</div>
 			</div>

@@ -160,6 +160,75 @@ class context{
 
 		return $this->getSessionAttribute('user');
 	}
+
+
+	/**
+	 * Vérifie les droits d'un fichier ou d'un dossier
+	 * @param $path
+	 * @param bool $read = true
+	 * @param bool $write = true
+	 * @param bool $create = false // (true) création du fichier si n'existe pas
+	 * @throws \Exception
+	 */
+	private function check_file ($path, $read = true, $write = true, $create = false) {
+
+		if (!$create && !file_exists ($path)) {
+			throw new \Exception('Le dossier "' . $path . '" est introuvable !');
+		} elseif ($create && !file_exists ($path)) {
+			mkdir ($path, 0755, true);
+		}
+
+		if (!is_readable ($path) || !is_writable ($path)) {
+			chmod ($path, 0755);
+		}
+
+		if ($read && !is_readable ($path)) {
+			throw new \Exception('Pas de permissions de lecture sur : ' . $path);
+		}
+
+		if ($write && !is_writable ($path)) {
+			throw new \Exception('Pas de permissions d\'écriture sur : ' . $path);
+		}
+
+	}
+
+	/**
+	 * @return bool|string
+	 */
+	public function uploadPicture() {
+
+		if(!isset($_FILES['file']) || $_FILES['file']['error'] != 0) {
+			return false;
+		}
+
+		$allowed_extensions = array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG');
+
+		$filename = $_FILES['file']['name'];
+		$file_infos = pathinfo($filename);
+		$extension = $file_infos['extension'];
+
+		if(!in_array($extension, $allowed_extensions)) {
+			return false;
+		}
+
+		$hash_name = sha1($filename . uniqid(true));
+
+		$picture = "file_".$hash_name.".".$extension;
+
+		$dest_dir = dirname(getcwd()) . DS . 'uploads';
+		//"/nfs/nas02a_etudiants/inf/uapv1702000/public_html/uploads/"
+
+		$file_path = $dest_dir . DS . $picture;
+
+		// $this->check_file($dest_dir, true, true, true);
+
+		if(file_exists($file_path) || move_uploaded_file($_FILES["file"]["tmp_name"], $file_path)) {
+			return $picture;
+		}
+
+
+		return false;
+	}
 	
 	public function __get($prop){
 		if(array_key_exists($prop, $this->data))        	

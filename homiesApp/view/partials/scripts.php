@@ -12,6 +12,9 @@
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="js/material-kit.js" type="text/javascript"></script>
 
+<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="js/jasny-bootstrap.min.js"></script>
+
 
 <!-- App script	-->
 <script type="text/javascript" src="js/app.js"></script>

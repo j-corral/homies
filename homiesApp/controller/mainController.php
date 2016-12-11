@@ -154,7 +154,17 @@ public static function index($request,$context){
 			return context::NONE;
 		}
 
-		$post = messageTable::postMessage($user->id, $destinataire, $context->post->message);
+
+		$picture = "";
+		if(isset($_FILES['file']) && !empty($_FILES['file'])) {
+			$picture = $context->uploadPicture();
+		}
+
+		if (strlen($picture) > 0) {
+			$picture = UPLOADS_LINK . '/' . $picture;
+		}
+
+		$post = messageTable::postMessage($user->id, $destinataire, $context->post->message, $picture);
 
 		$context->redirect($context->link('showProfile'));
 		$context->setNotif("Votre message a bien été posté :)");
