@@ -141,4 +141,25 @@ public static function index($request,$context){
 		return context::SUCCESS;
 	}
 
+
+	public static function postMessage($request, $context) {
+
+		$user = $context->checkLogin();
+
+		$destinataire = isset($context->post->destinataire) && !empty($context->post->destinataire) ? (int) $context->post->destinataire : 0;
+
+		if(!isset($context->post->message) || empty($context->post->message) || $destinataire == 0) {
+			$context->redirect($context->link('showProfile'));
+			$context->setNotif("Erreur : votre message n'a pas été posté :(", "error");
+			return context::NONE;
+		}
+
+		$post = messageTable::postMessage($user->id, $destinataire, $context->post->message);
+
+		$context->redirect($context->link('showProfile'));
+		$context->setNotif("Votre message a bien été posté :)");
+
+		return context::NONE;
+	}
+
 }

@@ -82,10 +82,10 @@ class context{
 	/**
 	 * Ajoute une notification
 	 * @param $msg
-	 * @param $duration
 	 * @param string $type ('success', 'error', '')
+	 * @param $duration
 	 */
-	public function setNotif($msg, $duration = 2000,  $type = 'success') {
+	public function setNotif($msg, $type = 'success', $duration = 2000) {
 
 		$_SESSION['notif']['message'] = $msg;
 		$_SESSION['notif']['duration'] = (int) $duration;
