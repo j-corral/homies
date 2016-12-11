@@ -32,7 +32,7 @@ public static function index($request,$context){
 
 			if($user != null) {
 				$context->setSessionAttribute('user', $user);
-				$context->redirect($context->link('index'));
+				$context->redirect($context->link('showMessage'));
 			} else {
 				$context->setNotif('Login ou mot de passe invalide !', 3000, 'error');
 			}
@@ -91,7 +91,7 @@ public static function index($request,$context){
 			$context->user->avatar = 'images/default-avatar.png';
 		}
 
-		$context->messages = messageTable::getMessagesByEmetteur($user_id);
+		$context->messages = messageTable::getMessagesByUser($user_id);
 
 		$context->edit = $user_id == $user->id;
 
