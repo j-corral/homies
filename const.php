@@ -6,8 +6,6 @@
  * Time: 23:45
  */
 
-define('ROUTE', basename(__FILE__) . '?action=');
-
 define('DS', DIRECTORY_SEPARATOR);
 
 define('IMG', 'images');
