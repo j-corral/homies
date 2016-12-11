@@ -16,7 +16,7 @@ $nameApp = "homiesApp";
 require_once 'lib/core.php';
 require_once $nameApp.'/controller/mainController.php';
 
-define('ROUTE', basename(__FILE__) . '?action=');
+require_once "const.php";
 
 if($debug) {
 	ini_set ("display_errors", 1);

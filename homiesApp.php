@@ -10,17 +10,7 @@ $nameApp = "homiesApp";
 require_once 'lib/core.php';
 require_once $nameApp.'/controller/mainController.php';
 
-define('ROUTE', basename(__FILE__) . '?action=');
-
-define('DS', DIRECTORY_SEPARATOR);
-
-define('IMG', 'images');
-
-define('AVATAR', 'default-avatar.png');
-
-define('UPLOADS', 'uploads');
-
-define('UPLOADS_LINK', 'https://' . $_SERVER["HTTP_HOST"] . $_SERVER['CONTEXT_PREFIX'] . '/' . UPLOADS);
+require_once "const.php";
 
 if($debug) {
 	ini_set ("display_errors", 1);
