@@ -130,7 +130,8 @@
 						<div class="content btn-action btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-default button-action">
 								<span id="like_<?=$message->id?>">
-									<label class="label-btn-action"><span class="badge">0</span>Like</label>
+									<?php if( !isset($message->aime) || $message->aime == null ) {$message->aime = 0;} ?>
+									<label class="label-btn-action"><span class="badge"><?=$message->aime?></span>Like</label>
 									<i class="material-icons icon-like">thumb_up</i>
 								</span>
 							</button>

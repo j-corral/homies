@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /* Classe Outils en lien avec l'entité message
 	composée de méthodes statiques
@@ -107,6 +107,23 @@ class messageTable {
 		$em->flush();
 
 		return true;
+	}
+
+	public static function like($idMessage) {
+
+		$em = dbconnection::getInstance()->getEntityManager();
+
+		$messageRepository = $em->getRepository('message');
+
+		$message = $messageRepository->findOneById($idMessage);
+
+		$nbOfLike = $message->aime++;
+		$message->aime;
+
+		$em->persist($message);
+		$em->flush();
+
+		return $nbOfLike;
 	}
 
 }
