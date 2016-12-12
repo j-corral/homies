@@ -65,12 +65,6 @@ public static function index($request,$context){
 
 		$context->messages = messageTable::getMessages($user->id);
 
-		$context->isPicture = false;
-
-		if(isset($context->messages->post->image) && file_exists($context->messages->post->image)) {
-			$context->isPicture = true;
-		}
-
 		return context::SUCCESS;
 	}
 

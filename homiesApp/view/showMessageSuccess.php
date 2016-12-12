@@ -13,34 +13,32 @@
         if ( isset($message->destinataire->prenom) && isset($message->destinataire->nom) ) {
         ?>
 			<div class="card">
-				<?php if($context->isPicture): ?>
-				<div class="card-image">
-					<img src="<?= $message->post->image; ?>" alt="" class="img">
-				</div>
-				<?php endif; ?>
 				<div class="content">
-					<p class="card-description">
-						<?= $message->post->texte; ?>
-					</p>
-					<div class="footer">
-						<div class="author">
-							<a href="<?= $context->link( 'showProfile&id=' . $message->emetteur->id ) ?>">
-								<?php if(!empty($message->emetteur->avatar)): ?>
-									<img class="avatar img-rounded" src="<?= $message->emetteur->avatar; ?>">
-								<?php else: ?>
-									<img class="avatar img-rounded" src="<?= IMG . DS . AVATAR; ?>">
-								<?php endif; ?>
-								<span>
+					<div class="author">
+						<a href="<?= $context->link( 'showProfile&id=' . $message->emetteur->id ) ?>">
+							<?php if(!empty($message->emetteur->avatar)): ?>
+								<img class="avatar img-rounded" src="<?= $message->emetteur->avatar; ?>">
+							<?php else: ?>
+								<img class="avatar img-rounded" src="<?= IMG . DS . AVATAR; ?>">
+							<?php endif; ?>
+							<span>
 									<?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
 								</span>
-							</a>
-							<i class="material-icons icon-min">play_arrow</i>
-                            <a href="<?= $context->link( 'showProfile&id=' . $message->destinataire->id ) ?>">
+						</a>
+						<i class="material-icons icon-min">play_arrow</i>
+						<a href="<?= $context->link( 'showProfile&id=' . $message->destinataire->id ) ?>">
 								<span>
 									<?= ucfirst( $message->destinataire->prenom ) ?> <?= ucfirst( $message->destinataire->nom ) ?>
 								</span>
-							</a>
-						</div>
+						</a>
+					</div>
+					<div class="card-description">
+						<h3><?= $message->post->texte; ?></h3>
+						<?php if($message->post->image): ?>
+							<div class="image-container" style="margin: 15px 0;">
+								<img src="<?= $message->post->image; ?>" alt="" class="img-rounded img-responsive">
+							</div>
+						<?php endif; ?>
 					</div>
 				</div>
 
