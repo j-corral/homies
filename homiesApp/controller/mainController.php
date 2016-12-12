@@ -91,6 +91,8 @@ class mainController {
 		$context->messages = messageTable::getMessagesByUser( $user_id );
 
 		$context->edit = $user_id == $user->id;
+		
+		$context->setLayout("layoutProfile");
 
 		return context::SUCCESS;
 	}

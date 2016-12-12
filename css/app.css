@@ -72,14 +72,22 @@
 /* Profile page */
 
 .parallax {
-    min-height: 200px;
+    margin-top: 70px;
+    min-height: 250px;
     background-image: url("../images/bg-head.jpg");
+    filter: brightness(75%);
+    -webkit-filter: brightness(75%);
 
     /* Parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#container-profile {
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .icon-min {

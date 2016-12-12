@@ -5,7 +5,7 @@
 		</div>
 	</div>
 </div>-->
-<div class="parallax"></div>
+
 <div class="section">
 	<div class="row">
 		<div class="col-md-4">
