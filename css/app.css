@@ -72,13 +72,10 @@
 /* Profile page */
 
 .parallax {
-    /* The image used */
+    min-height: 200px;
     background-image: url("../images/bg-head.jpg");
 
-    /* Set a specific height */
-    min-height: 200px;
-
-    /* Create the parallax scrolling effect */
+    /* Parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -95,10 +92,10 @@
 }
 
 .button-action {
-    margin: 0 5px!important;
+    margin: 0 5px !important;
     padding: 8px 15px;
-    border-radius: 3px!important;
-    background-color: #00bcd4!important;
+    border-radius: 3px !important;
+    background-color: #00bcd4 !important;
 }
 
 .label-btn-action {
@@ -113,8 +110,14 @@
     float: left;
 }
 
+.badge {
+    margin-right: 10px;
+    color: #5bc0de !important;
+    background-color: #fff !important;
+}
+
 .div-btn-actions .content-date {
-    color: #999!important;
+    color: #999 !important;
     padding-right: 20px;
     line-height: 60px;
     float: right;

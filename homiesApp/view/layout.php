@@ -5,7 +5,7 @@
 </head>
 <body class="index-page">
 
-	<!-- navbar -->
+	<!-- Navbar -->
 	<?php include_once "partials/navbar.php"; ?>
 
 	<!-- Main -->
@@ -24,9 +24,11 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Chat -->
+	<?php include_once "partials/chat.php"; ?>
 
-
-	<!-- footer -->
+	<!-- Footer -->
 	<?php include_once "partials/footer.php"; ?>
 
 	<!-- Scripts -->

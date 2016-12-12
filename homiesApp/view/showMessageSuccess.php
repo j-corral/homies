@@ -47,10 +47,10 @@
 				<div class="div-btn-actions">
 					<div class="content btn-action btn-group" role="group" aria-label="...">
 						<button type="button" class="btn btn-default button-action">
-							<a href="">
-								<label class="label-btn-action">Like</label>
-								<i class="material-icons">thumb_up</i>
-							</a>
+							<span id="like_<?=$message->id?>">
+								<label class="label-btn-action"><span class="badge">0</span>Like</label>
+								<i class="material-icons icon-like">thumb_up</i>
+							</span>
 						</button>
 						<button type="button" class="btn btn-default button-action">
 							<a href="">
@@ -73,7 +73,6 @@
         endforeach; ?>
 	</div>
 
-</div>
 </div>
 <!--<hr>
 <?php //foreach ( $context->messages as $message ): ?>

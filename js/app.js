@@ -14,11 +14,25 @@ $(document).ready(function () {
 
     });
 
+    /* Adding a like */
+    $('[id^="like_"]').click( function () {
+        var id = $( this ).attr('id');
+        var idm = id.split('_')[1];
 
-    $('.notification .close').click(function () {
-        $('.navbar').removeClass('navbar-success');
-        $('.navbar').removeClass('navbar-danger');
-        $('.navbar').addClass('navbar-info');
+        alert("Like : Message n°" + idm);
+
+        $.ajax({
+            type: 'POST',
+            async: true,
+            url:'ajaxCall.php?action=like',
+            data: { idm } ,
+            success: function (result) {
+                $('#like_' + idm + ' badge').val(result);
+            },
+            error: function() {
+                alert("error");
+            }
+        });
     });
 
 });
