@@ -109,7 +109,7 @@ class messageTable {
 		return true;
 	}
 
-	public static function like($idMessage) {
+	public static function likeMessage($idMessage) {
 
 		$em = dbconnection::getInstance()->getEntityManager();
 
@@ -117,13 +117,12 @@ class messageTable {
 
 		$message = $messageRepository->findOneById($idMessage);
 
-		$nbOfLike = $message->aime++;
-		$message->aime;
+		$message->aime++;
 
 		$em->persist($message);
 		$em->flush();
 
-		return $nbOfLike;
+		return $message->aime;
 	}
 
 }

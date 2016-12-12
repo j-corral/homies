@@ -14,6 +14,13 @@ $(document).ready(function () {
 
     });
 
+
+    $('.notification .close').click(function () {
+        $('.navbar').removeClass('navbar-success');
+        $('.navbar').removeClass('navbar-danger');
+        $('.navbar').addClass('navbar-info');
+    });
+
     /* Adding a like */
     $('[id^="like_"]').click( function () {
         var id = $( this ).attr('id');
@@ -24,10 +31,11 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             async: true,
-            url:'ajaxCall.php?action=like',
-            data: idm,
+            url:'ajaxCall.php?action=likeMessage',
+            data: {id:idm},
             success: function (result) {
-                $('#like_' + idm + ' badge').val(result);
+                console.log(result);
+                $('#like_' + idm + ' .badge').text(result);
             },
             error: function() {
                 alert("error");

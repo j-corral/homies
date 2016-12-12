@@ -1,40 +1,42 @@
 <?php
+
 /*
  * All doc on :
  * Toutes les actions disponibles dans l'application 
  *
  */
 
-class mainController{
+class mainController {
 
-public static function helloWorld($request,$context){
+	public static function helloWorld( $request, $context ) {
 
-	$context->mavariable="hello world";
-	return context::SUCCESS;
-}
+		$context->mavariable = "hello world";
 
-
-public static function index($request,$context){
-		
-	return context::SUCCESS;
-}
+		return context::SUCCESS;
+	}
 
 
-	public static function login($request,$context){
+	public static function index( $request, $context ) {
 
-		if($context->getSessionAttribute('user') != null) {
-			$context->redirect($context->link('index'));
+		return context::SUCCESS;
+	}
+
+
+	public static function login( $request, $context ) {
+
+		if ( $context->getSessionAttribute( 'user' ) != null ) {
+			$context->redirect( $context->link( 'index' ) );
 		}
 
-		if(isset($_POST) && !empty($_POST)) {
+		if ( isset( $_POST ) && ! empty( $_POST ) ) {
 
-			$user = utilisateurTable::getUserByLoginAndPass($context->post->user, $context->post->password);
+			$user = utilisateurTable::getUserByLoginAndPass( $context->post->user, $context->post->password );
 
-			if($user != null) {
-				$context->setSessionAttribute('user', $user);
-				$context->redirect($context->link('showMessage'));
+			if ( $user != null ) {
+				$context->setSessionAttribute( 'user', $user );
+				$context->redirect( $context->link( 'showMessage' ) );
 			} else {
-				$context->setNotif('Login ou mot de passe invalide !', 'error', 3000);
+				$context->setNotif( 'Login ou mot de passe invalide !', 'error', 3000 );
 			}
 
 		}
@@ -43,49 +45,50 @@ public static function index($request,$context){
 	}
 
 
-	public static function logout($request,$context){
+	public static function logout( $request, $context ) {
 
 		$_SESSION = [];
 		session_destroy();
 
-		if($request['ajax']) {
+		if ( $request['ajax'] ) {
 			$context->ajax = 'Vous êtes maintenant déconnecté !';
+
 			return context::NONE;
 		}
 
-		$context->redirect($context->link('login'));
+		$context->redirect( $context->link( 'login' ) );
 
 		return context::SUCCESS;
 	}
 
 
-	public static function showMessage($request, $context) {
-		
+	public static function showMessage( $request, $context ) {
+
 		$user = $context->checkLogin();
 
-		$context->messages = messageTable::getMessages($user->id);
+		$context->messages = messageTable::getMessages( $user->id );
 
 		return context::SUCCESS;
 	}
 
 
-	public static function showProfile($request, $context) {
+	public static function showProfile( $request, $context ) {
 
 		$user = $context->checkLogin();
 
-		$user_id = isset($request['id']) ? (int) $request['id'] : $user->id;
+		$user_id = isset( $request['id'] ) ? (int) $request['id'] : $user->id;
 
-		$context->user = utilisateurTable::getUserById($user_id);
+		$context->user = utilisateurTable::getUserById( $user_id );
 
-		if(is_null($context->user)) {
+		if ( is_null( $context->user ) ) {
 			return context::ERROR;
 		}
 
-		if(empty($context->user->avatar)) {
+		if ( empty( $context->user->avatar ) ) {
 			$context->user->avatar = 'images/default-avatar.png';
 		}
 
-		$context->messages = messageTable::getMessagesByUser($user_id);
+		$context->messages = messageTable::getMessagesByUser( $user_id );
 
 		$context->edit = $user_id == $user->id;
 
@@ -93,25 +96,25 @@ public static function index($request,$context){
 	}
 
 
-	public static function updateStatus($request, $context) {
+	public static function updateStatus( $request, $context ) {
 
 		$user = $context->checkLogin();
 
-		if(!isset($context->post->status) || empty($context->post->status)) {
+		if ( ! isset( $context->post->status ) || empty( $context->post->status ) ) {
 			return context::ERROR;
 		}
 
-		$update = utilisateurTable::updateStatus($user->id, $context->post->status);
+		$update = utilisateurTable::updateStatus( $user->id, $context->post->status );
 
-		$context->redirect($context->link('showProfile'));
+		$context->redirect( $context->link( 'showProfile' ) );
 
-		$context->setNotif("Votre statut a bien été modifié :)");
+		$context->setNotif( "Votre statut a bien été modifié :)" );
 
 		return context::NONE;
 	}
 
 
-	public static function showChat($request, $context) {
+	public static function showChat( $request, $context ) {
 
 		$user = $context->checkLogin();
 
@@ -122,7 +125,7 @@ public static function index($request,$context){
 	}
 
 
-	public static function showFriends($request, $context) {
+	public static function showFriends( $request, $context ) {
 
 		$user = $context->checkLogin();
 
@@ -136,34 +139,52 @@ public static function index($request,$context){
 	}
 
 
-	public static function postMessage($request, $context) {
+	public static function postMessage( $request, $context ) {
 
 		$user = $context->checkLogin();
 
-		$destinataire = isset($context->post->destinataire) && !empty($context->post->destinataire) ? (int) $context->post->destinataire : 0;
+		$destinataire = isset( $context->post->destinataire ) && ! empty( $context->post->destinataire ) ? (int) $context->post->destinataire : 0;
 
-		if(!isset($context->post->message) || empty($context->post->message) || $destinataire == 0) {
-			$context->redirect($context->link('showProfile'));
-			$context->setNotif("Erreur : votre message n'a pas été posté :(", "error");
+		if ( ! isset( $context->post->message ) || empty( $context->post->message ) || $destinataire == 0 ) {
+			$context->redirect( $context->link( 'showProfile' ) );
+			$context->setNotif( "Erreur : votre message n'a pas été posté :(", "error" );
+
 			return context::NONE;
 		}
 
 
 		$picture = "";
-		if(isset($_FILES['file']) && !empty($_FILES['file'])) {
+		if ( isset( $_FILES['file'] ) && ! empty( $_FILES['file'] ) ) {
 			$picture = $context->uploadPicture();
 		}
 
-		if (strlen($picture) > 0) {
+		if ( strlen( $picture ) > 0 ) {
 			$picture = UPLOADS_LINK . '/' . $picture;
 		}
 
-		$post = messageTable::postMessage($user->id, $destinataire, $context->post->message, $picture);
+		$post = messageTable::postMessage( $user->id, $destinataire, $context->post->message, $picture );
 
-		$context->redirect($context->link('showProfile'));
-		$context->setNotif("Votre message a bien été posté :)");
+		$context->redirect( $context->link( 'showProfile' ) );
+		$context->setNotif( "Votre message a bien été posté :)" );
 
 		return context::NONE;
+	}
+
+
+	public static function likeMessage($request, $context) {
+
+		$user = $context->checkLogin();
+		
+		if ( $request['ajax'] ) {
+
+			$context->ajax = messageTable::likeMessage($context->post->id);
+
+			return context::NONE;
+		} else {
+			var_dump($id . " - Error like not ajax");
+		}
+
+
 	}
 
 }
