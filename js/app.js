@@ -19,13 +19,13 @@ $(document).ready(function () {
         var id = $( this ).attr('id');
         var idm = id.split('_')[1];
 
-        alert("Like : Message n°" + idm);
+        /*alert("Like : Message n°" + idm);*/ // TEST
 
         $.ajax({
             type: 'POST',
             async: true,
             url:'ajaxCall.php?action=like',
-            data: { idm } ,
+            data: idm,
             success: function (result) {
                 $('#like_' + idm + ' badge').val(result);
             },
