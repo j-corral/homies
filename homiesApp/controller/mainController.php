@@ -34,7 +34,7 @@ public static function index($request,$context){
 				$context->setSessionAttribute('user', $user);
 				$context->redirect($context->link('showMessage'));
 			} else {
-				$context->setNotif('Login ou mot de passe invalide !', 3000, 'error');
+				$context->setNotif('Login ou mot de passe invalide !', 'error', 3000);
 			}
 
 		}
