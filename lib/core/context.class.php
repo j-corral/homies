@@ -229,6 +229,21 @@ class context{
 
 		return false;
 	}
+
+
+	/**
+	 * @param string $file
+	 *
+	 * @return bool
+	 */
+	public function isPicture($file = '') {
+
+		if($file != '' && file_exists($file)) {
+			return true;
+		}
+
+		return false;
+	}
 	
 	public function __get($prop){
 		if(array_key_exists($prop, $this->data))        	
