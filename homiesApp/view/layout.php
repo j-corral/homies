@@ -26,7 +26,7 @@
 	</div>
 	
 	<!-- Chat -->
-	<?php include_once "partials/chat.php"; ?>
+	<?php if($context->isLogged()) include_once "partials/chat.php"; ?>
 
 	<!-- Footer -->
 	<?php include_once "partials/footer.php"; ?>

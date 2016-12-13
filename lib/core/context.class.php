@@ -149,16 +149,31 @@ class context{
 
 	/**
 	 * Vérifie qu'un utilisateur est connecté
+	 * Redirection vers la page de connexion sinon
+	 *
+	 * @return array $user
 	 */
 	public function checkLogin() {
 
-		$user = $this->getSessionAttribute('user');
-
-		if ($user == null) {
+		if (!$this->isLogged()) {
 			$this->redirect($this->link('login'));
 		}
 
 		return $this->getSessionAttribute('user');
+	}
+
+
+	/**
+	 * Permet de savoir si un utilisateur est connecté ou non
+	 * @return bool
+	 */
+	public function isLogged() {
+
+		if($this->getSessionAttribute('user') != null) {
+			return true;
+		}
+
+		return false;
 	}
 
 

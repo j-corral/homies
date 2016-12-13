@@ -1,18 +1,29 @@
-<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+	<div id="chat-fake">
+		<div class="chat-header navbar navbar-info">
+			<span id="chat-title">CHAT</span>
+			<i id="chat-close" class="material-icons">remove</i>
+		</div>
+	</div>
+	<div id="chat-global" class="card card-pricing">
+		<div id="chat-header" class="chat-header navbar navbar-info">
+			<span id="chat-title">CHAT</span>
+			<i id="chat-close" class="material-icons">remove</i>
+		</div>
+		<div id="chat-content" class="content">
+			<div id="chat-messages"></div>
+			<hr>
+			<div id="chat-area">
 
-    <div id="chat-global">
-        
-        <div id="chat-header">Chat</div>
+				<div class="form-group form-info is-empty">
+					<textarea name="message" class="form-control" placeholder="Write something here..."
+					          rows="3"></textarea>
+					<span class="material-input"></span>
+				</div>
+				<button id="chat-send" type="button" class="btn btn-info">
+					<i class="material-icons">send</i>
+					<div class="ripple-container"></div>
+				</button>
 
-        <div id="chat-body">
-            <div id="chat-content">Messages ici ...</div>
-    
-            <div id="chat-footer">
-                <textarea id="chat-footer-textarea" placeholder="Type your text here..."></textarea>
-                <span id="chat-footer-send"><i class="material-icons" title="Send your message">send</i></span>
-            </div>
-        </div>
-
-    </div>
-
-<?php endif; ?>
+			</div>
+		</div>
+	</div>
