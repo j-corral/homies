@@ -40,7 +40,7 @@
 					</li>
 					<li>
 						<a href="<?= $context->link('showFriends'); ?>">
-							<i class="material-icons">group_add</i> Amis
+							<i class="material-icons">group_add</i> Friends
 						</a>
 					</li>
 
