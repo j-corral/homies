@@ -5,7 +5,7 @@
 		</div>
 	</div>
 </div>-->
-<div class="parallax"></div>
+
 <div class="section">
 	<div class="row">
 		<div class="col-md-4">
@@ -149,7 +149,7 @@
 							</button>
 						</div>
 
-						<span class="content content-date">Posté le <?= $message->post->date->format('j M. à H:i'); ?></span>
+						<span class="content content-date">Posted on <?= $message->post->date->format('j F \a\t g:i a'); ?></span>
 					</div>
 				</div>
 			<?php }
