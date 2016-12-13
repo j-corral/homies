@@ -45,6 +45,21 @@
     font-size: 15px;
 }
 
+#chat-drag {
+    display: block;
+    position: absolute;
+    right: 42px;
+    top: 4px;
+}
+
+#chat-reset {
+    display: none;
+    position: absolute;
+    right: 42px;
+    top: 4px;
+    font-size: 24px;
+}
+
 #chat-close {
     position: absolute;
     right: 10px;

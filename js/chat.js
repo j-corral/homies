@@ -4,9 +4,34 @@
 
 $("#chat-global").draggable();
 
-$('#chat-header').click(function () {
-    $("#chat-global").slideUp("slow");
-    $("#chat-fake").delay(480).show(0);
+$('#chat-global').on("drag", function () {
+    $('#chat-drag').hide();
+    $('#chat-reset').show();
+});
+
+$("#chat-global").data({
+    'originalLeft': $("#chat-global").css('left'),
+    'origionalTop': $("#chat-global").css('top')
+});
+
+$("#chat-reset").click(function() {
+    $("#chat-global").css({
+        'left': $("#chat-global").data('originalLeft'),
+        'top': $("#chat-global").data('origionalTop')
+    });
+    $('#chat-reset').hide();
+    $('#chat-drag').show();
+});
+
+$('#chat-close').click(function () {
+    $("#chat-global").css({
+        'left': $("#chat-global").data('originalLeft'),
+        'top': $("#chat-global").data('origionalTop')
+    });
+    $('#chat-reset').hide();
+    $('#chat-drag').show();
+    $("#chat-global").delay(200).slideUp("slow");
+    $("#chat-fake").delay(680).show(0);
 });
 
 $('#chat-fake').click(function () {

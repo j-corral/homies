@@ -1,12 +1,13 @@
 	<div id="chat-fake">
 		<div class="chat-header navbar navbar-info">
 			<span id="chat-title">CHAT</span>
-			<i id="chat-close" class="material-icons">remove</i>
 		</div>
 	</div>
 	<div id="chat-global" class="card card-pricing">
 		<div id="chat-header" class="chat-header navbar navbar-info">
 			<span id="chat-title">CHAT</span>
+			<i id="chat-reset" class="material-icons">fullscreen_exit</i>
+			<i id="chat-drag" class="material-icons">open_with</i>
 			<i id="chat-close" class="material-icons">remove</i>
 		</div>
 		<div id="chat-content" class="content">
