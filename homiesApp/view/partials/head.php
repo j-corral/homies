@@ -16,3 +16,8 @@
 
 <!-- App style -->
 <link rel="stylesheet" href="css/app.css">
+
+<!-- Chat style -->
+<?php if($context->isLogged()): ?>
+	<link rel="stylesheet" href="css/chat.css">
+<?php endif; ?>
