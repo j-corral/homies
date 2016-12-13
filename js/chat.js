@@ -3,7 +3,22 @@
  */
 
 function initChat() {
-    $("#chat-global").draggable();
+
+   // alert(window.screen.height);
+
+    $("#chat-global").draggable({
+        //containment: $('#main-container'),
+
+        stop: function(event, ui) {
+            console.log(ui);
+            console.log((window.screen.height - $(this).height() ));
+            if(ui.position.top < 70) {
+                $('#chat-drag').trigger('click');
+            } else if(ui.position.top + $(this).height() > (window.screen.height)){
+                resetChat();
+            }
+        }
+    });
 
     $("#chat-global").resizable({
         minHeight: 370,
@@ -66,5 +81,26 @@ function initChatEvents() {
     });
 }
 
+
+function ajaxGetMessages() {
+
+    $.ajax({
+        type: 'POST',
+        async: true,
+        url:'ajaxCall.php?action=ajaxGetChatMessages',
+        cache: false,
+        //data: ,
+        success: function (result) {
+            console.log(result);
+            $("#chat-messages").append(result);
+        },
+        error: function() {
+            console.log("error get chat messages");
+        }
+    });
+
+}
+
 initChat();
 initChatEvents();
+//ajaxGetMessages();

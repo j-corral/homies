@@ -16,9 +16,9 @@ class chatTable {
 	public static function getChats(){
 		$em = dbconnection::getInstance()->getEntityManager() ;
 
-		$messageRepository = $em->getRepository('chat');
+		$chatRepository = $em->getRepository('chat');
 
-		$chats = $messageRepository->findAll();
+		$chats = $chatRepository->findAll();
 
 		return $chats;
 	}

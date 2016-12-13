@@ -1,3 +1,4 @@
+<div id="chat-container">
 	<div id="chat-fake">
 		<div class="chat-header navbar navbar-info">
 			<span id="chat-title">CHAT</span>
@@ -29,3 +30,4 @@
 			</div>
 		</div>
 	</div>
+</div>
