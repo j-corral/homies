@@ -69,6 +69,22 @@
     z-index: 99999;
 }
 
+/* Friends list page */
+
+.card-friend-list {
+    min-width: 370px;
+    min-height: 293px;
+}
+
+.card-avatar-list {
+    min-height: 127px;
+}
+
+.card-avatar-list .img-responsive {
+    width: 130px;
+    height: 127px;
+}
+
 /* Profile page */
 
 .parallax {

@@ -1,7 +1,7 @@
 <div class="cd-section">
 	<div class="row">
 		<div class="tim-typo">
-			<h2 class="title">Mes homies</h2>
+			<h2 class="title">Friends list</h2>
 		</div>
 	</div>
 </div>
@@ -13,9 +13,9 @@
 
 			<div class="col-xs-12 col-md-6 col-lg-4">
 
-				<div class="card card-profile">
+				<div class="card card-profile card-friend-list">
 
-					<div class="card-avatar">
+					<div class="card-avatar card-avatar-list">
 						<a href="<?= $context->link( 'showProfile&id=' . $user->id ) ?>">
 						<?php if ( $user->avatar ): ?>
 							<img class="img-rounded img-responsive" src="<?= $user->avatar; ?>">
