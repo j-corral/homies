@@ -15,7 +15,8 @@
 				</div>
 
 				<div class="content">
-					<h6 class="category text-gray"><?= $context->user->date_de_naissance->format( "d-m-Y" ); ?></h6>
+                    <i class="material-icons">cake</i>
+                    <h6 class="category text-gray div-inline"><?= $context->user->date_de_naissance->format( "d-m-Y" ); ?></h6>
 
 					<h4 class="card-title"><?= ucfirst( $context->user->prenom ) ?> <?= ucfirst( $context->user->nom ) ?></h4>
 
@@ -29,7 +30,7 @@
 									</span>
 									<div class="form-group form-info label-floating is-focused">
 										<label class="control-label">Status</label>
-										<input type="text" name="status" placeholder="Indiquez votre état"
+										<input type="text" name="status" placeholder=""
 										       value="<?= $context->user->statut ?>" class="form-control">
 										<span class="material-input"></span>
 									</div>
@@ -40,10 +41,12 @@
 							</div>
 						</form>
 					<?php else: ?>
-						<i class="material-icons left">face</i>
-						<span class="card-description text-info">
-							<?= $context->user->statut ?>
-						</span>
+                        <?php if ($context->user->statut):?>
+                            <i class="material-icons left">face</i>
+                            <span class="card-description text-info">
+                                <?= $context->user->statut ?>
+                            </span>
+                        <?php endif; ?>
 					<?php endif; ?>
 				</div>
 			</div>

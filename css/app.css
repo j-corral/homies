@@ -71,9 +71,13 @@
 
 /* Friends list page */
 
+.card-full {
+    margin-bottom: 50px;
+}
+
 .card-friend-list {
     min-width: 370px;
-    min-height: 293px;
+    min-height: 305px;
 }
 
 .card-avatar-list {
@@ -86,10 +90,6 @@
 
     background-size: cover;
     background-position: center;
-}
-
-.text-bold {
-    font-weight: bold;
 }
 
 /* Profile page */
@@ -156,4 +156,14 @@
 
 .div-btn-actions .material-icons, .div-btn-actions .label-btn-action {
     color: #fff;
+}
+
+/* Others */
+
+.text-bold {
+    font-weight: bold;
+}
+
+.div-inline {
+    display: inline;
 }
