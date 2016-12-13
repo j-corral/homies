@@ -1,9 +1,10 @@
 	<div id="chat-fake">
 		<div class="chat-header navbar navbar-info">
 			<span id="chat-title">CHAT</span>
+			<i id="chat-up" class="material-icons">call_made</i>
 		</div>
 	</div>
-	<div id="chat-global" class="card card-pricing">
+	<div id="chat-global" class="card card-pricing ui-widget-content">
 		<div id="chat-header" class="chat-header navbar navbar-info">
 			<span id="chat-title">CHAT</span>
 			<i id="chat-reset" class="material-icons">fullscreen_exit</i>
