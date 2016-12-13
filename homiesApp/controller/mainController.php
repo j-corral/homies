@@ -36,7 +36,7 @@ class mainController {
 				$context->setSessionAttribute( 'user', $user );
 				$context->redirect( $context->link( 'showMessage' ) );
 			} else {
-				$context->setNotif( 'Login ou mot de passe invalide !', 'error', 3000 );
+				$context->setNotif( 'Login or password invalid !', 'error', 3000 );
 			}
 
 		}
@@ -51,7 +51,7 @@ class mainController {
 		session_destroy();
 
 		if ( $request['ajax'] ) {
-			$context->ajax = 'Vous êtes maintenant déconnecté !';
+			$context->ajax = 'You are now offline !';
 
 			return context::NONE;
 		}
@@ -110,7 +110,7 @@ class mainController {
 
 		$context->redirect( $context->link( 'showProfile' ) );
 
-		$context->setNotif( "Votre statut a bien été modifié :)" );
+		$context->setNotif( "Your status has been modified :)" );
 
 		return context::NONE;
 	}
@@ -149,7 +149,7 @@ class mainController {
 
 		if ( ! isset( $context->post->message ) || empty( $context->post->message ) || $destinataire == 0 ) {
 			$context->redirect( $context->link( 'showProfile' ) );
-			$context->setNotif( "Erreur : votre message n'a pas été posté :(", "error" );
+			$context->setNotif( "Error: Your message has not been posted :(", "error" );
 
 			return context::NONE;
 		}
@@ -167,7 +167,7 @@ class mainController {
 		$post = messageTable::postMessage( $user->id, $destinataire, $context->post->message, $picture );
 
 		$context->redirect( $context->link( 'showProfile' ) );
-		$context->setNotif( "Votre message a bien été posté :)" );
+		$context->setNotif( "Your message has been posted :)" );
 
 		return context::NONE;
 	}
