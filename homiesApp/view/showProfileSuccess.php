@@ -28,7 +28,7 @@
 										<i class="material-icons">face</i>
 									</span>
 									<div class="form-group form-info label-floating is-focused">
-										<label class="control-label">Statut</label>
+										<label class="control-label">Status</label>
 										<input type="text" name="status" placeholder="Indiquez votre état"
 										       value="<?= $context->user->statut ?>" class="form-control">
 										<span class="material-input"></span>
@@ -36,7 +36,7 @@
 								</div>
 							</div>
 							<div class="footer">
-								<input type="submit" class="btn btn-info btn-round" value="Modifier"/>
+								<input type="submit" class="btn btn-info btn-round" value="Edit"/>
 							</div>
 						</form>
 					<?php else: ?>
@@ -55,7 +55,7 @@
 				<div class="content">
 					<h3 class="category text-info">
 						<i class="material-icons">create</i>
-						Poster un message
+						To post a message
 					</h3>
 
 					<form method="post" enctype="multipart/form-data" action="<?= $context->link("postMessage") ?>">
@@ -63,7 +63,7 @@
 						<input type="hidden" name="destinataire" value="<?= $context->user->id ?>">
 
 						<div class="form-group form-info is-empty">
-							<textarea name="message" class="form-control" placeholder="Ecrivez quelque chose ici..." rows="6"></textarea>
+							<textarea name="message" class="form-control" placeholder="Write something here..." rows="6"></textarea>
 							<span class="material-input"></span>
 						</div>
 
@@ -74,16 +74,16 @@
 									<div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 50%;"></div>
 									<div>
 
-										<button type="button" rel="tooltip" class="btn btn-info" data-original-title="Selectionner une image" data-placement="bottom" title="">
+										<button type="button" rel="tooltip" class="btn btn-info" data-original-title="Select an image" data-placement="bottom" title="">
 											<i class="material-icons">add_a_photo</i>
 											<div class="ripple-container"></div>
-											<span class="fileinput-exists">Modifier</span>
+											<span class="fileinput-exists">Edit</span>
 											<input type="hidden" value="" name="picture">
 											<input type="file" name="file" accept="image/*">
 											<div class="ripple-container"></div>
 										</button>
 
-										<a class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Supprimer<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 43.5625px; top: 8.40625px; background-color: rgb(255, 255, 255); transform: scale(15.625);"></div></div></a>
+										<a class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Delete<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 43.5625px; top: 8.40625px; background-color: rgb(255, 255, 255); transform: scale(15.625);"></div></div></a>
 									</div>
 								</div>
 
@@ -91,7 +91,7 @@
 						</div>
 
 						<div class="row">
-							<input type="submit" class="btn btn-info pull-right" value="Poster"/>
+							<input type="submit" class="btn btn-info pull-right" value="Post"/>
 						</div>
 
 					</form>

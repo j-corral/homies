@@ -1,7 +1,7 @@
 <div class="cd-section">
 	<div class="row">
 		<div class="tim-typo">
-			<h2 class="title">Actualités</h2>
+			<h2 class="title">News</h2>
 		</div>
 	</div>
 </div>
