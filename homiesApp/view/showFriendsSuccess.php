@@ -31,7 +31,7 @@
 						<h4 class="card-title"><?= ucfirst( $user->prenom ) ?> <?= ucfirst( $user->nom ) ?></h4>
 
 						<p class="card-description">
-							<strong>Statut : </strong>
+							<strong>Status : </strong>
 							<?= $user->statut ?>
 						</p>
 						<a href="<?= $context->link( 'showProfile&id=' . $user->id ) ?>" class="btn btn-info btn-round">Voir</a>

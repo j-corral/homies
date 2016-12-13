@@ -110,18 +110,42 @@
 						</p>
 						<div class="footer">
 							<div class="author">
-                                <a href="<?= $context->link( 'showProfile&id=' . $message->emetteur->id ) ?>">
-									<img class="avatar img-raised" src="<?= $context->user->avatar; ?>">
-									<span>
-										<?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
-									</span>
-								</a>
-								<i class="material-icons icon-min">play_arrow</i>
-                                <a href="<?= $context->link( 'showProfile&id=' . $message->destinataire->id ) ?>">
-                                    <span>
-                                        <?= ucfirst( $message->destinataire->prenom ) ?> <?= ucfirst( $message->destinataire->nom ) ?>
-                                    </span>
-								</a>
+								<?php
+									if ( ($message->emetteur->id) == ($message->destinataire->id) ) {
+								?>
+									<a href="<?= $context->link( 'showProfile&id=' . $message->emetteur->id ) ?>">
+										<?php if(!empty($message->emetteur->avatar)): ?>
+											<img class="avatar img-rounded" src="<?= $message->emetteur->avatar; ?>">
+										<?php else: ?>
+											<img class="avatar img-rounded" src="<?= IMG . DS . AVATAR; ?>">
+										<?php endif; ?>
+										<span class="text-bold">
+											<?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
+										</span>
+									</a>
+									<span class="text-gray"> has published on his wall.</span>
+								<?php
+									} else {
+								?>
+									<a href="<?= $context->link( 'showProfile&id=' . $message->emetteur->id ) ?>">
+										<?php if(!empty($message->emetteur->avatar)): ?>
+											<img class="avatar img-rounded" src="<?= $message->emetteur->avatar; ?>">
+										<?php else: ?>
+											<img class="avatar img-rounded" src="<?= IMG . DS . AVATAR; ?>">
+										<?php endif; ?>
+										<span class="text-bold">
+											<?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
+										</span>
+									</a>
+									<i class="material-icons icon-min">play_arrow</i>
+									<a href="<?= $context->link( 'showProfile&id=' . $message->destinataire->id ) ?>">
+										<span class="text-bold">
+											<?= ucfirst( $message->destinataire->prenom ) ?> <?= ucfirst( $message->destinataire->nom ) ?>
+										</span>
+									</a>
+								<?php
+									}
+								?>
 							</div>
 						</div>
 					</div>
