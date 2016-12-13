@@ -186,6 +186,19 @@ class mainController {
 			var_dump($id . " - Error like not ajax");
 		}
 
+	}
+
+
+	public static function ajaxGetChatMessages($request, $context) {
+
+		$user = $context->checkLogin();
+
+		if ( $request['ajax'] ) {
+
+			$context->ajax = chatTable::getChats();
+
+			return context::NONE;
+		}
 
 	}
 

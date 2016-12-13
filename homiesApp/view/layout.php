@@ -9,7 +9,7 @@
 	<?php include_once "partials/navbar.php"; ?>
 
 	<!-- Main -->
-	<div class="wrapper">
+	<div id="main-container" class="wrapper">
 		<!-- Header -->
 		<?php //include_once "partials/header.php"; ?>
 

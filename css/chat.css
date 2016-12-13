@@ -86,7 +86,7 @@
 
 #chat-messages {
     width: 100%;
-    min-height: 200px;
+    height: 200px;
     overflow-y: scroll;
 }
 
@@ -103,3 +103,14 @@
     bottom: 5px;
     padding: 8px;
 }
+
+
+/*#chat-container {
+    position: fixed;
+    top:70px;
+    left: 0px;
+    width: 100%;
+    height: calc(100% - 70px);
+    z-index: auto;
+    overflow-y: scroll;
+}*/
