@@ -17,6 +17,10 @@
 <!-- App style -->
 <link rel="stylesheet" href="css/app.css">
 
+<!-- jquery UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
 <!-- Chat style -->
 <?php if($context->isLogged()): ?>
 	<link rel="stylesheet" href="css/chat.css">

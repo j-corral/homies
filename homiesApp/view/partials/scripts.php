@@ -15,6 +15,10 @@
 <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="js/lib/jasny-bootstrap.min.js"></script>
 
+<!-- Jquery UI (draggable, resizable)-->
+<script src="js/lib/jquery-ui.js"></script>
+
+
 
 <!-- App script	-->
 <?php if($context->isLogged()) : ?>
