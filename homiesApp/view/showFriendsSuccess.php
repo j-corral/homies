@@ -18,9 +18,9 @@
 					<div class="card-avatar card-avatar-list">
 						<a href="<?= $context->link( 'showProfile&id=' . $user->id ) ?>">
 						<?php if ( $user->avatar ): ?>
-							<img class="img-rounded img-responsive" src="<?= $user->avatar; ?>">
+							<img class="img-rounded img-responsive" style="background-image: url('<?= $user->avatar; ?>')">
 						<?php else: ?>
-							<img class="img-rounded img-responsive" src="<?= $context->avatar; ?>">
+							<img class="img-rounded img-responsive" style="background-image: url('<?= $context->avatar; ?>')">
 						<?php endif; ?>
 						</a>
 					</div>

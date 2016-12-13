@@ -77,12 +77,15 @@
 }
 
 .card-avatar-list {
-    min-height: 127px;
+    min-height: 130px;
 }
 
 .card-avatar-list .img-responsive {
     width: 130px;
-    height: 127px;
+    height: 130px;
+
+    background-size: cover;
+    background-position: center;
 }
 
 /* Profile page */
