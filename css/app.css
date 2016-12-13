@@ -88,6 +88,10 @@
     background-position: center;
 }
 
+.text-bold {
+    font-weight: bold;
+}
+
 /* Profile page */
 
 .parallax {
