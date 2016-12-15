@@ -6,19 +6,14 @@ $('[id^="like_"]').click( function () {
     var id = $( this ).attr('id');
     var idm = id.split('_')[1];
 
-    /*alert("Like : Message n°" + idm);*/ // TEST
+    var options = {};
+    options.data = {id:idm};
 
-    $.ajax({
-        type: 'POST',
-        async: true,
-        url:'ajaxCall.php?action=likeMessage',
-        data: {id:idm},
-        success: function (result) {
-            console.log(result);
-            $('#like_' + idm + ' .badge').text(result);
-        },
-        error: function() {
-            alert("error");
-        }
+    ajaxRequest("likeMessage", options, function (result) {
+        console.log(result);
+        $('#like_' + idm + ' .badge').text(result);
+    }, function() {
+        alert("error");
     });
+
 });

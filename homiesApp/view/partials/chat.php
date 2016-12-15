@@ -1,6 +1,9 @@
 <div id="chat-container">
 	<div id="chat-fake">
 		<div class="chat-header navbar navbar-info">
+			<!--<span id="chat-notif">
+				<i class="material-icons">notifications_active</i>
+			</span>-->
 			<span id="chat-title">CHAT</span>
 			<i id="chat-up" class="material-icons">call_made</i>
 		</div>

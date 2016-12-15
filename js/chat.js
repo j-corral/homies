@@ -4,14 +4,10 @@
 
 function initChat() {
 
-   // alert(window.screen.height);
-
     $("#chat-global").draggable({
-        //containment: $('#main-container'),
+        containment: $('#main-container'),
 
         stop: function(event, ui) {
-            console.log(ui);
-            console.log((window.screen.height - $(this).height() ));
             if(ui.position.top < 70) {
                 $('#chat-drag').trigger('click');
             } else if(ui.position.top + $(this).height() > (window.screen.height)){
@@ -50,6 +46,7 @@ function initChatEvents() {
         });
         $('#chat-reset').hide();
         $('#chat-drag').show();
+        resizeChatContent();
     });
 
     $('#chat-global').on("drag", function () {
@@ -60,7 +57,7 @@ function initChatEvents() {
     $('#chat-close').click(function () {
         resetChat();
         $("#chat-global").delay(200).slideUp("slow");
-        $("#chat-fake").delay(400).show(0);
+        $("#chat-fake").delay(700).show(0);
     });
 
     $('#chat-fake').click(function () {
@@ -78,7 +75,27 @@ function initChatEvents() {
         });
         $('#chat-drag').hide();
         $('#chat-reset').show();
+        resizeChatContent();
     });
+
+
+    $("#chat-global").resize(function () {
+        resizeChatContent();
+    });
+
+}
+
+
+function resizeChatContent() {
+    var chatHeight = document.getElementById('chat-global').getBoundingClientRect().height;
+    var headerHeight = document.getElementById('chat-header').getBoundingClientRect().height;
+    var areaHeight = document.getElementById('chat-area').getBoundingClientRect().height;
+
+    var messagesHeight = chatHeight - ( headerHeight + areaHeight + 80 );
+
+    //console.log("msg height:", messagesHeight);
+
+    $('#chat-messages').css('height', messagesHeight);
 }
 
 
