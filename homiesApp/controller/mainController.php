@@ -176,16 +176,12 @@ class mainController {
 	public static function likeMessage($request, $context) {
 
 		$user = $context->checkLogin();
-		
-		if ( $request['ajax'] ) {
 
-			$context->ajax = messageTable::likeMessage($context->post->id);
+		$context->checkIsAjax($request);
 
-			return context::NONE;
-		} else {
-			var_dump($id . " - Error like not ajax");
-		}
+		$context->ajax = messageTable::likeMessage($context->post->id);
 
+		return context::NONE;
 	}
 
 
@@ -193,13 +189,11 @@ class mainController {
 
 		$user = $context->checkLogin();
 
-		if ( $request['ajax'] ) {
+		$context->checkIsAjax($request);
 
-			$context->ajax = chatTable::getChats();
+		$context->ajax = chatTable::getChats();
 
-			return context::NONE;
-		}
-
+		return context::NONE;
 	}
 
 }

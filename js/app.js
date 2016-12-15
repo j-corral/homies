@@ -3,22 +3,12 @@
  */
 $(document).ready(function () {
 
+    $.getScript("js/functions.js");
+
     $.getScript("js/notification.js");
 
     $.getScript("js/chat.js");
 
     $.getScript("js/like.js");
-
-    /*$('#logout0').click(function () {
-
-        $.ajax({
-            url:'ajaxCall.php?action=logout',
-            success: function (result) {
-                alert(result);
-            }
-        });
-
-    });*/
-
 
 });

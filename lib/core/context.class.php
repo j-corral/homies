@@ -259,6 +259,20 @@ class context{
 
 		return false;
 	}
+
+	/**
+	 * @param array $request
+	 *
+	 * @return bool
+	 */
+	public function checkIsAjax($request = array()) {
+
+		if ( isset($request['ajax']) && $request['ajax'] ) {
+			return true;
+		}
+
+		trigger_error('Access denied - not an AJAX request...', E_USER_ERROR);
+	}
 	
 	public function __get($prop){
 		if(array_key_exists($prop, $this->data))        	
