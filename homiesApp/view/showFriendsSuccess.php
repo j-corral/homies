@@ -11,7 +11,7 @@
 
 		<?php foreach ( $context->users as $user ): ?>
 
-			<div class="col-xs-12 col-md-6 col-lg-4">
+			<div class="col-xs-12 col-md-6 col-lg-4 card-full">
 
 				<div class="card card-profile card-friend-list">
 
@@ -26,15 +26,20 @@
 					</div>
 
 					<div class="content">
-						<h6 class="category text-gray"><?= $user->date_de_naissance->format( "d-m-Y" ); ?></h6>
+						<i class="material-icons">cake</i>
+						<h6 class="category text-gray div-inline"><?= $user->date_de_naissance->format( "d-m-Y" ); ?></h6>
 
 						<h4 class="card-title"><?= ucfirst( $user->prenom ) ?> <?= ucfirst( $user->nom ) ?></h4>
 
 						<p class="card-description">
-							<strong>Status : </strong>
-							<?= $user->statut ?>
+							<?php if ($user->statut):?>
+								<i class="material-icons left">face</i>
+								<span class="card-description text-info">
+                                <?= $user->statut ?>
+                            </span>
+							<?php endif; ?>
 						</p>
-						<a href="<?= $context->link( 'showProfile&id=' . $user->id ) ?>" class="btn btn-info btn-round">Voir</a>
+						<a href="<?= $context->link( 'showProfile&id=' . $user->id ) ?>" class="btn btn-info btn-round">Show</a>
 					</div>
 				</div>
 			</div>
