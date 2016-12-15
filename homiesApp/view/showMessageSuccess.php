@@ -64,12 +64,10 @@
 
 				<div class="div-btn-actions">
 					<div class="content btn-action btn-group" role="group" aria-label="...">
-						<button type="button" class="btn btn-default button-action">
-							<span id="like_<?=$message->id?>">
-								<?php if( !isset($message->aime) || $message->aime == null ) {$message->aime = 0;} ?>
-								<label class="label-btn-action"><span class="badge"><?=$message->aime?></span>Like</label>
-								<i class="material-icons icon-like">thumb_up</i>
-							</span>
+						<button id="like_<?=$message->id?>" type="button" class="btn btn-default button-action">
+                            <?php if( !isset($message->aime) || $message->aime == null ) {$message->aime = 0;} ?>
+                            <label class="label-btn-action"><span class="badge"><?=$message->aime?></span>Like</label>
+                            <i class="material-icons icon-like">thumb_up</i>
 						</button>
 						<button type="button" class="btn btn-default button-action">
 							<a href="">
