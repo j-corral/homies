@@ -131,6 +131,7 @@
 
 .label-btn-action {
     margin-right : 10px;
+    cursor: pointer;
 }
 
 .div-btn-actions .content {

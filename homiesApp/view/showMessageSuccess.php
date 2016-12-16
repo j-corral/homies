@@ -10,7 +10,7 @@
 	<div class="col-md-8">
         <?php foreach ( $context->messages as $message ) :
 
-        if ( isset($message->destinataire->prenom) && isset($message->destinataire->nom) ) {
+            if ( isset($message->destinataire->prenom) && isset($message->destinataire->nom) ) {
         ?>
 			<div class="card">
 				<div class="content">
@@ -25,8 +25,8 @@
 									<img class="avatar img-rounded" src="<?= IMG . DS . AVATAR; ?>">
 								<?php endif; ?>
 								<span class="text-bold">
-											<?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
-										</span>
+                                    <?= ucfirst( $message->emetteur->prenom ) ?> <?= ucfirst( $message->emetteur->nom ) ?>
+                                </span>
 							</a>
 							<span class="text-gray"> has published on his wall.</span>
 						<?php
