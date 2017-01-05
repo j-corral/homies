@@ -4,7 +4,7 @@
  * @Entity
  * @Table(name="fredouil.chat")
  */
-class chat{
+class chat {
 
 	/** @Id @Column(type="integer")
 	 *  @GeneratedValue
@@ -18,14 +18,33 @@ class chat{
 	public $post;
 
 	/**
-	 *  @OneToOne(targetEntity="post")
+	 *  @OneToOne(targetEntity="utilisateur")
 	 *  @JoinColumn(name="emetteur", referencedColumnName="id")
 	 *
 	*/
 	public $emetteur;
 
+	/**
+	 * @return mixed
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-	
+	/**
+	 * @return mixed
+	 */
+	public function getPost() {
+		return $this->post;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getEmetteur() {
+		return $this->emetteur;
+	}
+
 }
 
 ?>

@@ -108,8 +108,35 @@ function ajaxGetMessages() {
         cache: false,
         //data: ,
         success: function (result) {
-            console.log(result);
-            $("#chat-messages").append(result);
+
+            if(result != undefined) {
+
+                result.forEach(function (item) {
+                    console.log(item);
+
+                    if(item.emetteur != undefined) {
+                        //$("#chat-messages").append(item.emetteur.id);
+                        $("#chat-messages").append(item.emetteur.prenom + ' ' + item.emetteur.nom);
+
+                        if(item.emetteur.avatar != undefined) {
+                            $("#chat-messages").append('<img src="'+item.emetteur.avatar+'" alt="avatar"/>');
+                        }
+
+                    }
+
+                    if(item.post != undefined) {
+                        $("#chat-messages").append(item.post.date);
+                        //$("#chat-messages").append('<p>'+item.post.texte+'</p>');
+                    }
+
+
+
+                });
+
+            } else {
+                $("#chat-messages").append("No messages");
+            }
+
         },
         error: function() {
             console.log("error get chat messages");
@@ -120,4 +147,4 @@ function ajaxGetMessages() {
 
 initChat();
 initChatEvents();
-//ajaxGetMessages();
+ajaxGetMessages();

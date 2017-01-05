@@ -56,7 +56,18 @@ if($view != context::NONE){
 	header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
 	header( 'Content-type: application/json' );
 
-	echo json_encode((array) $context->ajax);
+	$data = $context->ajax;
+
+	// Attributs autorisés
+	$whitelist = array(
+		'chat' => array('id', 'emetteur', 'post'),
+		'post' => array('id', 'texte', 'date', 'image'),
+		'utilisateur' => array('id', 'identifiant', 'nom', 'prenom', 'avatar', 'date_de_naissance'),
+		'message' => array('id', 'emetteur', 'destinataire', 'parent', 'post', 'aime'),
+	);
+
+	echo Serializor::json_encode($data, 1, $whitelist);
+
 	exit();
 }
 

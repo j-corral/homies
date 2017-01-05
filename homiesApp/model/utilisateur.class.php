@@ -31,6 +31,58 @@ class utilisateur{
 
 	/** @Column(type="datetime") */ 
 	public $date_de_naissance;
+
+	/**
+	 * @return mixed
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getIdentifiant() {
+		return $this->identifiant;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getNom() {
+		return $this->nom;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPrenom() {
+		return $this->prenom;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getAvatar() {
+		return $this->avatar;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStatut() {
+		return $this->statut;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDateDeNaissance() {
+		return $this->date_de_naissance;
+	}
+
+
+
 	
 }
 

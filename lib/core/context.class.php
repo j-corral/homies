@@ -1,7 +1,8 @@
 <?php
 
-class context{
+class context {
     private $data;
+	public $ajax;
     const SUCCESS="Success";
     const ERROR="Error";
     const NONE="None";
@@ -284,6 +285,21 @@ class context{
    	public function __set($prop,$value) {
         $this->data[$prop]=$value;      
     }
-	
-		
+
+
+	/**
+	 * Dump a variable properly
+	 * @param $var
+	 * @param bool $die : die app after dump if true
+	 */
+	public function xDump($var, $die = false) {
+
+		echo "<pre>";
+		print_r($var);
+		echo "</pre>";
+
+		if($die) {
+			die();
+		}
+	}
 }

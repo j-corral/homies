@@ -23,6 +23,10 @@ function ajaxRequest(action, options, success, error) {
         options.cache = false;
     }
 
+    if(options.dataType == undefined) {
+        options.dataType = "JSON";
+    }
+
     options.url = 'ajaxCall.php?action=' + action;
 
     options.success = success;

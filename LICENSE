@@ -3,6 +3,7 @@ MIT License
 PHP skeleton : Corinne Fredouille
 ORM : Doctrine 2
 Design : Bootstrap 3 with Material Kit from creative-tim
+Serializor : Bubba-h57 - https://gist.github.com/bubba-h57/3714787
 Copyright (c) Homies 2016 : Jonathan Corral - Kenny Coadalen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

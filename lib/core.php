@@ -5,7 +5,8 @@ require_once "core/vendor/autoload.php";
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-// Chargement des classes context et de connexion
+// Chargement des classes serializor, context et de connexion
+require_once 'core/serializor.class.php' ;
 require_once 'core/context.class.php' ;
 require_once 'core/dbconnection.class.php' ;
 

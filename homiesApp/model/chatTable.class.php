@@ -41,6 +41,7 @@ class chatTable {
 		return $last;
 	}
 
+
 }
 
 ?>

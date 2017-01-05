@@ -191,7 +191,10 @@ class mainController {
 
 		$context->checkIsAjax($request);
 
-		$context->ajax = chatTable::getChats();
+//		$chats = chatTable::getChats();
+		$chats = chatTable::getLastChat();
+
+		$context->ajax = $chats;
 
 		return context::NONE;
 	}

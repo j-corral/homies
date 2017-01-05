@@ -37,6 +37,37 @@ class post{
 		$this->image = $image;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTexte() {
+		return $this->texte;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDate() {
+		return $this->date;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getImage() {
+		return $this->image;
+	}
+
+
+
+
 
 
 

@@ -53,6 +53,48 @@ class message{
 		$this->aime         = 0;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getEmetteur() {
+		return $this->emetteur;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDestinataire() {
+		return $this->destinataire;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getParent() {
+		return $this->parent;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPost() {
+		return $this->post;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getAime() {
+		return $this->aime;
+	}
+
 
 }
 
