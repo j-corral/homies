@@ -199,4 +199,15 @@ class mainController {
 		return context::NONE;
 	}
 
+
+	public static function ajaxSendChatMessage($request, $context) {
+		$user = $context->checkLogin();
+
+		$context->checkIsAjax($request);
+
+		$context->ajax = chatTable::sendMessage($user->id, $context->post->msg);
+
+		return context::NONE;
+	}
+
 }

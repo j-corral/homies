@@ -83,6 +83,11 @@ function initChatEvents() {
         resizeChatContent();
     });
 
+
+    $("#chat-send").click(function () {
+        ajaxSendMessage();
+    });
+
 }
 
 
@@ -101,47 +106,68 @@ function resizeChatContent() {
 
 function ajaxGetMessages() {
 
-    $.ajax({
-        type: 'POST',
-        async: true,
-        url:'ajaxCall.php?action=ajaxGetChatMessages',
-        cache: false,
-        //data: ,
-        success: function (result) {
+    var options = {};
 
-            if(result != undefined) {
+    ajaxRequest("ajaxGetChatMessages", options, function (result) {
 
-                result.forEach(function (item) {
-                    console.log(item);
+        if(result != undefined) {
 
-                    if(item.emetteur != undefined) {
-                        //$("#chat-messages").append(item.emetteur.id);
-                        $("#chat-messages").append(item.emetteur.prenom + ' ' + item.emetteur.nom);
+            result.forEach(function (item) {
+                //console.log(item);
 
-                        if(item.emetteur.avatar != undefined) {
-                            $("#chat-messages").append('<img src="'+item.emetteur.avatar+'" alt="avatar"/>');
-                        }
+                if(item.emetteur != undefined) {
+                    //$("#chat-messages").append(item.emetteur.id);
+                    $("#chat-messages").append(item.emetteur.prenom + ' ' + item.emetteur.nom);
 
+                    if(item.emetteur.avatar != undefined) {
+                        $("#chat-messages").append('<img src="'+item.emetteur.avatar+'" alt="avatar"/>');
                     }
 
-                    if(item.post != undefined) {
-                        $("#chat-messages").append(item.post.date);
-                        //$("#chat-messages").append('<p>'+item.post.texte+'</p>');
-                    }
+                }
 
+                if(item.post != undefined) {
+                    $("#chat-messages").append(item.post.date);
+                    //$("#chat-messages").append('<p>'+item.post.texte+'</p>');
+                }
 
+            });
 
-                });
-
-            } else {
-                $("#chat-messages").append("No messages");
-            }
-
-        },
-        error: function() {
-            console.log("error get chat messages");
+        } else {
+            $("#chat-messages").append("No messages");
         }
+
+    }, function() {
+        console.log("error get chat messages");
     });
+
+}
+
+
+function ajaxSendMessage() {
+
+
+    var msg = $("#chat-area textarea").val();
+    msg = $.trim(msg);
+
+    if(msg.length > 0 && msg != ' ') {
+
+        var options = {};
+        options.data = {msg:msg};
+
+        ajaxRequest("ajaxSendChatMessage", options, function (result) {
+
+            if(result) {
+                console.log(result);
+                console.log('message sent');
+                $("#chat-area textarea").val('');
+            } else {
+                console.log('message not sent');
+            }
+        }, function() {
+            console.log('Error sending message !');
+        });
+
+    }
 
 }
 

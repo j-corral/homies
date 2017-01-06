@@ -24,6 +24,18 @@ class chat {
 	*/
 	public $emetteur;
 
+
+	/**
+	 * chat constructor.
+	 *
+	 * @param $post
+	 * @param $emetteur
+	 */
+	public function __construct( $post, $emetteur ) {
+		$this->post = $post;
+		$this->emetteur = $emetteur;
+	}
+
 	/**
 	 * @return mixed
 	 */

@@ -66,7 +66,11 @@ if($view != context::NONE){
 		'message' => array('id', 'emetteur', 'destinataire', 'parent', 'post', 'aime'),
 	);
 
-	echo Serializor::json_encode($data, 1, $whitelist);
+	if(is_array($data) || is_object($data)) {
+		echo Serializor::json_encode($data, 1, $whitelist);
+	} else {
+		echo json_encode($data);
+	}
 
 	exit();
 }

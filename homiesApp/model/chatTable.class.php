@@ -42,6 +42,27 @@ class chatTable {
 	}
 
 
+	public static function sendMessage($idEmetteur, $message) {
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$utilisateurRepository = $em->getRepository('utilisateur');
+		$emetteur = $utilisateurRepository->findOneById($idEmetteur);
+
+		$postEntity = postTable::createPost($message);
+
+		if(!empty($postEntity) && !empty($emetteur)) {
+			$chatEntity = new chat($postEntity, $emetteur);
+
+			$em->persist($chatEntity);
+			$em->flush();
+
+			return true;
+		}
+
+		return false;
+	}
+
+
 }
 
 ?>
