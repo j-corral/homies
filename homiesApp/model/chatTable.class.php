@@ -10,15 +10,25 @@ class chatTable {
 	* Récupère la totalité des messages postés sur le chat
 	* 
 	* @author Kenny
+	 *
+	 * @param $last
 	* 
 	* @return $chats
 	*/
-	public static function getChats(){
+	public static function getChats($last = 0){
 		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$last = (int) $last;
 
 		$chatRepository = $em->getRepository('chat');
 
-		$chats = $chatRepository->findAll();
+		//$chats = $chatRepository->findAll();
+		//$chats = $chatRepository->findBy(array(), array('id' => 'ASC'));
+
+		$chats = $chatRepository->createQueryBuilder('c')
+		             ->where('c.id > ' . $last)
+		             ->getQuery()
+		             ->getResult();
 
 		return $chats;
 	}

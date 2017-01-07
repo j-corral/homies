@@ -22,5 +22,9 @@
 
 <!-- App script	-->
 <?php if($context->isLogged()) : ?>
+<script>
+	var default_avatar = "<?= IMG . DS . AVATAR; ?>";
+	var profile_link = "<?= $context->link('showProfile&id='); ?>";
+</script>
 <script type="text/javascript" src="js/app.js"></script>
 <?php endif; ?>

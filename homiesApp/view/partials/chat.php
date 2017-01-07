@@ -16,7 +16,23 @@
 			<i id="chat-close" class="material-icons">remove</i>
 		</div>
 		<div id="chat-content" class="content">
-			<div id="chat-messages"></div>
+			<div id="chat-messages">
+
+				<!--<div class="row msg-row">
+					<div class="author pull-left msg-author">
+						<a href="homiesApp.php?action=showProfile&amp;id=12">
+							<img class="avatar img-rounded" src="https://avatarfiles.alphacoders.com/495/49573.jpg">
+							<span class="text-bold">Adrien Brugel</span>
+						</a>
+					</div>
+					<div class="card content-info msg-card">
+						<h4>Mon msg</h4>
+						<span class="text-gray pull-right msg-date">5 January at 5:22 pm</span>
+					</div>
+				</div>-->
+
+
+			</div>
 			<hr>
 			<div id="chat-area">
 

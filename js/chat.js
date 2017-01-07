@@ -2,15 +2,18 @@
  * Created by kenny on 13/12/16.
  */
 
+var last_msg = 0;
+
 function initChat() {
+
 
     $("#chat-global").draggable({
         containment: $('#main-container'),
 
-        stop: function(event, ui) {
-            if(ui.position.top < 70) {
+        stop: function (event, ui) {
+            if (ui.position.top < 70) {
                 $('#chat-drag').trigger('click');
-            } else if(ui.position.top + $(this).height() > (window.screen.height)){
+            } else if (ui.position.top + $(this).height() > (window.screen.height)) {
                 resetChat();
             }
         }
@@ -37,7 +40,7 @@ function resetChat() {
 
 function initChatEvents() {
 
-    $("#chat-reset").click(function() {
+    $("#chat-reset").click(function () {
         $("#chat-global").css({
             'left': $("#chat-global").data('originalLeft'),
             'top': $("#chat-global").data('origionalTop'),
@@ -70,8 +73,8 @@ function initChatEvents() {
         $("#chat-global").css({
             'width': "100%",
             'height': "calc(100vh - 70px)",
-            'left' : 0,
-            'top' : '70px'
+            'left': 0,
+            'top': '70px'
         });
         $('#chat-drag').hide();
         $('#chat-reset').show();
@@ -106,37 +109,82 @@ function resizeChatContent() {
 
 function ajaxGetMessages() {
 
+    var height = 0;
+
     var options = {};
+
+    options.data = {last:last_msg};
 
     ajaxRequest("ajaxGetChatMessages", options, function (result) {
 
-        if(result != undefined) {
+        if (result != undefined) {
+
+            if(result.length > 0 && result[result.length - 1].id != undefined) {
+
+                //console.log('new messages');
+
+                last_msg = result[result.length - 1].id;
+                //console.log(last_msg);
+
 
             result.forEach(function (item) {
-                //console.log(item);
+                    //console.log(item.id);
 
-                if(item.emetteur != undefined) {
-                    //$("#chat-messages").append(item.emetteur.id);
-                    $("#chat-messages").append(item.emetteur.prenom + ' ' + item.emetteur.nom);
+                    var id = '';
+                    var avatar = default_avatar;
+                    var prenom = 'undefined';
+                    var nom = 'name';
 
-                    if(item.emetteur.avatar != undefined) {
-                        $("#chat-messages").append('<img src="'+item.emetteur.avatar+'" alt="avatar"/>');
+                    var msg_text = '...';
+                    var msg_date = 'undefined date';
+
+                    if (item.emetteur != undefined) {
+                        id = item.emetteur.id;
+                        prenom = item.emetteur.prenom;
+                        nom =   item.emetteur.nom;
+
+                        if (item.emetteur.avatar != undefined && item.emetteur.avatar.length > 0) {
+                            avatar = item.emetteur.avatar;
+                        }
+
                     }
 
-                }
+                    if (item.post != undefined) {
+                        msg_date = item.post.date;
+                        msg_text = escapeHtml(item.post.texte);
+                    }
 
-                if(item.post != undefined) {
-                    $("#chat-messages").append(item.post.date);
-                    //$("#chat-messages").append('<p>'+item.post.texte+'</p>');
-                }
+                    var html = '<div class="row msg-row"> ' +
+                        '<div class="author pull-left msg-author"> ' +
+                        '<a href="'+ profile_link + id +'"> ' +
+                        '<img class="avatar img-rounded" src="'+avatar+'"> ' +
+                        '<span class="text-bold">'+ prenom + ' ' + nom +'</span> ' +
+                        '</a> ' +
+                        '</div> ' +
+                        '<div class="card content-info msg-card"> ' +
+                        '<h4>'+msg_text+'</h4> ' +
+                        '<span class="text-gray pull-right msg-date">'+msg_date+'</span> ' +
+                        '</div> ' +
+                        '</div>';
 
-            });
+                    $("#chat-messages").append(html);
+
+
+
+                });
+
+
+                height = parseInt($("#chat-messages")[0].scrollHeight);
+                //console.log($("#chat-messages").scrollTop());
+                $("#chat-messages").animate({scrollTop: height}, 0);
+
+            }
 
         } else {
             $("#chat-messages").append("No messages");
         }
 
-    }, function() {
+    }, function () {
         console.log("error get chat messages");
     });
 
@@ -149,21 +197,22 @@ function ajaxSendMessage() {
     var msg = $("#chat-area textarea").val();
     msg = $.trim(msg);
 
-    if(msg.length > 0 && msg != ' ') {
+    if (msg.length > 0 && msg != ' ') {
 
         var options = {};
-        options.data = {msg:msg};
+        options.data = {msg: msg};
 
         ajaxRequest("ajaxSendChatMessage", options, function (result) {
 
-            if(result) {
+            if (result) {
                 console.log(result);
                 console.log('message sent');
                 $("#chat-area textarea").val('');
+                ajaxGetMessages();
             } else {
                 console.log('message not sent');
             }
-        }, function() {
+        }, function () {
             console.log('Error sending message !');
         });
 
@@ -174,3 +223,9 @@ function ajaxSendMessage() {
 initChat();
 initChatEvents();
 ajaxGetMessages();
+
+$('#chat-fake').trigger('click');
+
+setInterval(ajaxGetMessages, 5000);
+
+

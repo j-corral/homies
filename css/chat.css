@@ -114,6 +114,7 @@
     width: 100%;
     height: 253px;
     overflow-y: scroll;
+    overflow-wrap: break-word;
 }
 
 #chat-area {
@@ -144,3 +145,33 @@
     z-index: auto;
     overflow-y: scroll;
 }*/
+
+
+.msg-row {
+    margin: 15px 0;
+}
+
+.msg-author {
+    margin-left: 20px;
+}
+
+.msg-card {
+    max-width: 50%;
+    min-width: 220px;
+    display: block;
+    min-height: 35px;
+    margin-top: 35px;
+    margin-left: 55px;
+    line-height: 35px;
+    text-align: left;
+    padding: 5px 10px;
+    margin-bottom: 8px;
+}
+
+.msg-date {
+    display: block;
+    margin-top: 8px;
+    z-index: 999;
+    color: #999 !important;
+}
+

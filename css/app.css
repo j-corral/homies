@@ -197,3 +197,9 @@
 .div-inline {
     display: inline;
 }
+
+
+/* fix overflow-text card */
+.card-description {
+    overflow-wrap: break-word;
+}
