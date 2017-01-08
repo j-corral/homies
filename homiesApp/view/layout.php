@@ -10,19 +10,21 @@
 
 	<!-- Main -->
 	<div id="main-container" class="wrapper">
-		<!-- Header -->
-		<?php //include_once "partials/header.php"; ?>
 
 		<div class="main">
-			<div class="profile-content">
+			<?php include_once $template_view; ?>
+		</div>
+
+		<!--<div class="main">
+			<div class="profile-content <?php /*//if(!$context->isLogged()) echo ' login '; */?>">
 				<div class="container">
 
 					<div class="row">
-						<?php include_once $template_view; ?>
+						<?php /*//include_once $template_view; */?>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 	
 	<!-- Chat -->

@@ -21,6 +21,7 @@
 
 
 <!-- App script	-->
+<script type="text/javascript" src="js/notification.js"></script>
 <?php if($context->isLogged()) : ?>
 <script>
 	var default_avatar = "<?= IMG . DS . AVATAR; ?>";

@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $.getScript("js/functions.js");
 
-    $.getScript("js/notification.js");
+    //$.getScript("js/notification.js");
 
     $.getScript("js/chat.js");
 

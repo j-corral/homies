@@ -203,3 +203,9 @@
 .card-description {
     overflow-wrap: break-word;
 }
+
+
+.login {
+    background-image: url(../images/bg-head.jpg);
+    background-size: cover;
+}

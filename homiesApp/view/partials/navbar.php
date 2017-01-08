@@ -51,7 +51,7 @@
 							<div class="ripple-container"></div></a>
 						<ul class="dropdown-menu dropdown-menu-right">
 							<li class="dropdown-header">Settings</li>
-							<li><a href="#">Account</a></li>
+<!--							<li><a href="#">Account</a></li>-->
 							<li class="divider"></li>
 							<li id="logout"><a href="<?= $context->link('logout'); ?>">Logout</a></li>
 						</ul>
