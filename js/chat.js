@@ -127,7 +127,7 @@ function ajaxGetMessages() {
                 //console.log(last_msg);
 
                 // notify when closed
-                
+
 
             result.forEach(function (item) {
                     //console.log(item.id);
@@ -157,7 +157,16 @@ function ajaxGetMessages() {
 
                     if (item.post != undefined) {
                         msg_date = item.post.date;
-                        msg_text = escapeHtml(item.post.texte);
+
+                        if(item.post.texte != undefined) {
+
+                            var msg = $.trim(item.post.texte);
+
+                            if(msg.length > 0 && msg != ' ') {
+                                msg_text = escapeHtml(msg);
+                            }
+
+                        }
                     }
 
                     var html = '<div class="row msg-row"> ' +
