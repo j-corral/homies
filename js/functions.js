@@ -54,6 +54,6 @@ function urlExists(testUrl) {
         async: false
     });
 
-    console.log(http);
+    //console.log(http);
     return http.status==200;
 }
