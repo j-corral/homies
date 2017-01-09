@@ -126,6 +126,8 @@ function ajaxGetMessages() {
                 last_msg = result[result.length - 1].id;
                 //console.log(last_msg);
 
+                // notify when closed
+                
 
             result.forEach(function (item) {
                     //console.log(item.id);
@@ -144,7 +146,11 @@ function ajaxGetMessages() {
                         nom =   item.emetteur.nom;
 
                         if (item.emetteur.avatar != undefined && item.emetteur.avatar.length > 0) {
-                            avatar = item.emetteur.avatar;
+
+                            if(urlExists(item.emetteur.avatar)) {
+                                avatar = item.emetteur.avatar;
+                            }
+
                         }
 
                     }

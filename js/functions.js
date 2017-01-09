@@ -45,3 +45,15 @@ function escapeHtml(text) {
         }[a];
     });
 }
+
+
+function urlExists(testUrl) {
+    var http = $.ajax({
+        type:"HEAD", //Not get
+        url: testUrl,
+        async: false
+    });
+
+    console.log(http);
+    return http.status==200;
+}
