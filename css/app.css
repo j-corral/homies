@@ -178,6 +178,10 @@
     float: right;
 }
 
+.div-btn-actions-shared {
+    margin-bottom: 40px;
+}
+
 .div-btn-actions .material-icons, .div-btn-actions .label-btn-action,
 .div-btn-actions-shared .material-icons, .div-btn-actions-shared .label-btn-action {
     color: #fff;

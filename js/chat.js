@@ -1,5 +1,5 @@
 /**
- * Created by kenny on 13/12/16.
+ * Created by jonathan on 13/12/16.
  */
 
 var last_msg = 0;
@@ -89,6 +89,15 @@ function initChatEvents() {
 
     $("#chat-send").click(function () {
         ajaxSendMessage();
+    });
+
+
+    $("#chat-area textarea").keypress(function (e) {
+
+        if(e.which == 13 && !e.shiftKey) {
+           $("#chat-send").trigger('click');
+        }
+
     });
 
 }

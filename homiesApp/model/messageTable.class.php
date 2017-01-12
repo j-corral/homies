@@ -8,17 +8,26 @@ class messageTable {
 
 	/**
 	 * @param $id
+	 * @param $last
 	 *
 	 * @return array
 	 */
-	public static function getMessages($id){
+	public static function getMessages($id, $last = 0){
 		$em = dbconnection::getInstance()->getEntityManager() ;
 
 		$messageRepository = $em->getRepository('message');
 
-		$messages = $messageRepository->findBy(array(), array(
+		$last = (int) $last;
+
+		/*$messages = $messageRepository->findBy(array(), array(
 			'id' => 'desc'
-		));
+		));*/
+
+		$messages = $messageRepository->createQueryBuilder('m')
+		                        ->where('m.id > ' . $last)
+								->orderBy('m.id', 'ASC')
+		                        ->getQuery()
+		                        ->getResult();
 
 		return $messages;
 	}
