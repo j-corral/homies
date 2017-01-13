@@ -1,3 +1,4 @@
+<!-- Author: Kenny -->
 <!--<div class="cd-section">
 	<div class="row">
 		<div class="tim-typo">

@@ -1,7 +1,7 @@
 <?php if(isset($_SESSION['notif']) && !empty($_SESSION['notif'])): ?>
-	<nav class="navbar navbar<?= $_SESSION['notif']['type'];?> navbar-fixed-top">
+	<nav id="nav" class="navbar navbar<?= $_SESSION['notif']['type'];?> navbar-fixed-top">
 <?php else: ?>
-	<nav class="navbar navbar-info navbar-fixed-top">
+	<nav id="nav" class="navbar navbar-info navbar-fixed-top">
 <?php endif; ?>
 	<div class="container">
 		<div class="navbar-header">
@@ -66,7 +66,9 @@
 		</div>
 	</div>
 	<!-- Notification -->
-	<?php include_once "notification.php"; ?>
+	<div id="notification">
+		<?php include_once "notification.php"; ?>
+	</div>
 </nav>
 <!-- End Navbar -->
 

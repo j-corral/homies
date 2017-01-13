@@ -219,7 +219,7 @@ function ajaxGetMessages() {
         }
 
     }, function () {
-        console.log("error get chat messages");
+        setNotif("error get chat messages", 'error');
     });
 
 }
@@ -239,15 +239,15 @@ function ajaxSendMessage() {
         ajaxRequest("ajaxSendChatMessage", options, function (result) {
 
             if (result) {
-                console.log(result);
-                console.log('message sent');
+                //console.log(result);
+                setNotif('Chat message sent', 'success');
                 $("#chat-area textarea").val('');
                 ajaxGetMessages();
             } else {
-                console.log('message not sent');
+                setNotif('Chat message not sent', 'error');
             }
         }, function () {
-            console.log('Error sending message !');
+            setNotif('Error sending chat message !', 'error');
         });
 
     }

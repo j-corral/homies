@@ -48,7 +48,7 @@ function ajaxGetPosts() {
         }
 
     }, function () {
-        console.log("Error get posts");
+        setNotif("Error get posts", 'error');
     });
 
 }
@@ -353,7 +353,7 @@ function ajaxGetPreviousPosts() {
         }
 
     }, function () {
-        console.log("Error get posts");
+        setNotif("Error get posts", 'error');
     });
 
     updating = false;
@@ -393,7 +393,7 @@ function ajaxRefreshLikes() {
         }
 
     }, function () {
-        console.log("Error refresh likes");
+        setNotif("Error refresh likes", 'error');
     });
 
 }
@@ -413,11 +413,11 @@ function ajaxShareMessage(idMessage) {
         if(result != undefined && result) {
             ajaxGetPosts();
         } else {
-            console.log("Fail like message");
+            setNotif("Fail like message", 'error');
         }
 
     }, function () {
-        console.log("Error like message");
+        setNotif("Error like message", 'error');
     });
 
 }
@@ -465,12 +465,13 @@ $("#postMessage").submit(function (e) {
                 $("#message").val('');
                 $("#btn-remove").trigger('click');
                 ajaxGetPosts();
+                setNotif("Your message has been posted :)", 'success');
             } else {
-                console.log("Fail post message");
+                setNotif("Fail post message", 'error');
             }
 
         }, function () {
-            console.log("Error post message");
+            setNotif("Error post message", 'error');
         });
     }
 

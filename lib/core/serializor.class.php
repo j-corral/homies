@@ -1,5 +1,6 @@
 <?php
-//namespace H57\Util;
+// Author : none (H57\Util);
+// Adapted by : Jonathan
 
 class Serializor {
 

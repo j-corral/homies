@@ -82,6 +82,7 @@ class context {
 
 	/**
 	 * Ajoute une notification
+	 * @author: Jonathan
 	 * @param $msg
 	 * @param string $type ('success', 'error', '')
 	 * @param $duration
@@ -106,6 +107,7 @@ class context {
 
 	/**
 	 * Détruit une notification
+	 * @author: Jonathan
 	 */
 	public function resetNotif() {
 		if(isset($_SESSION['notif'])) {
@@ -114,7 +116,12 @@ class context {
 	}
 
 
-
+	/**
+	 * @author: Jonathan
+	 * @param array $data
+	 *
+	 * @return array|mixed
+	 */
 	public function sanitize(array $data) {
 
 		if(!is_array($data)) {
@@ -132,7 +139,7 @@ class context {
 
 	/**
 	 * Convertion de tableau en objet
-	 *
+	 * @author: Jonathan
 	 * @param array $array
 	 *
 	 * @return object
@@ -151,7 +158,7 @@ class context {
 	/**
 	 * Vérifie qu'un utilisateur est connecté
 	 * Redirection vers la page de connexion sinon
-	 *
+	 * @author: Jonathan
 	 * @return array $user
 	 */
 	public function checkLogin() {
@@ -166,6 +173,7 @@ class context {
 
 	/**
 	 * Permet de savoir si un utilisateur est connecté ou non
+	 * @author: Jonathan
 	 * @return bool
 	 */
 	public function isLogged() {
@@ -180,6 +188,7 @@ class context {
 
 	/**
 	 * Vérifie les droits d'un fichier ou d'un dossier
+	 * @author: Jonathan
 	 * @param $path
 	 * @param bool $read = true
 	 * @param bool $write = true
@@ -209,6 +218,7 @@ class context {
 	}
 
 	/**
+	 * @author: Jonathan
 	 * @return bool|string
 	 */
 	public function uploadPicture() {
@@ -248,6 +258,7 @@ class context {
 
 
 	/**
+	 * @author: Jonathan
 	 * @param string $file
 	 *
 	 * @return bool
@@ -262,6 +273,7 @@ class context {
 	}
 
 	/**
+	 * @author: Jonathan
 	 * @param array $request
 	 *
 	 * @return bool
@@ -288,6 +300,7 @@ class context {
 
 
 	/**
+	 * @author: Jonathan
 	 * Dump a variable properly
 	 * @param $var
 	 * @param bool $die : die app after dump if true

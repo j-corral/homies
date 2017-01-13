@@ -16,12 +16,26 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function index( $request, $context ) {
 
 		return context::SUCCESS;
 	}
 
 
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function login( $request, $context ) {
 
 		if ( $context->getSessionAttribute( 'user' ) != null ) {
@@ -45,6 +59,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function logout( $request, $context ) {
 
 		$_SESSION = [];
@@ -62,6 +83,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function showMessage( $request, $context ) {
 
 		$user = $context->checkLogin();
@@ -74,6 +102,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function ajaxGetWallPosts($request, $context) {
 
 		$user = $context->checkLogin();
@@ -88,6 +123,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function ajaxGetPreviousPosts($request, $context) {
 
 		$user = $context->checkLogin();
@@ -102,6 +144,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function ajaxRefreshLikes($request, $context) {
 
 		$user = $context->checkLogin();
@@ -116,6 +165,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function showProfile( $request, $context ) {
 
 		$user = $context->checkLogin();
@@ -142,6 +198,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function updateStatus( $request, $context ) {
 
 		$user = $context->checkLogin();
@@ -160,6 +223,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function showChat( $request, $context ) {
 
 		$user = $context->checkLogin();
@@ -171,6 +241,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function showFriends( $request, $context ) {
 
 		$user = $context->checkLogin();
@@ -185,6 +262,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function postMessage( $request, $context ) {
 
 		$user = $context->checkLogin();
@@ -217,6 +301,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function ajaxPostMessage($request, $context) {
 
 		$user = $context->checkLogin();
@@ -243,6 +334,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Kenny
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function likeMessage($request, $context) {
 
 		$user = $context->checkLogin();
@@ -254,6 +352,14 @@ class mainController {
 		return context::NONE;
 	}
 
+
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function ajaxShareMessage($request, $context) {
 
 		$user = $context->checkLogin();
@@ -266,6 +372,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @author: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function ajaxGetChatMessages($request, $context) {
 
 		$user = $context->checkLogin();
@@ -281,6 +394,13 @@ class mainController {
 	}
 
 
+	/**
+	 * @autor: Jonathan
+	 * @param $request
+	 * @param $context
+	 *
+	 * @return string
+	 */
 	public static function ajaxSendChatMessage($request, $context) {
 		$user = $context->checkLogin();
 

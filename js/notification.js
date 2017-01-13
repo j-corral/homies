@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
 
-    $('.notification .close').click(function () {
+    $(document).on("click", '.notification .close', function () {
         $('.navbar').removeClass('navbar-success');
         $('.navbar').removeClass('navbar-danger');
         $('.navbar').addClass('navbar-info');
