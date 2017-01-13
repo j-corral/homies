@@ -243,13 +243,13 @@ function createCards(result, container, forceAppend) {
                         '<div class="content btn-action btn-group" role="group" aria-label="..."> ' +
                             '<button id="like_'+post_id+'" type="button" class="btn btn-default button-action btn-like"> ' +
                                 '<label class="label-btn-action"><span class="badge">'+post_likes+'</span>Like</label> ' +
-                            '<i class="material-icons icon-like">thumb_up</i> ' +
+                                '<i class="material-icons icon-like">thumb_up</i> ' +
                             '</button> ' +
-                            '<button type="button" class="btn btn-default button-action"> ' +
-                                '<a href=""> ' +
+                            '<button data-id="'+post_id+'"  type="button" class="btn btn-default button-action btn-ishare"> ' +
+                                //'<a href=""> ' +
                                     '<label class="label-btn-action">Share</label> ' +
                                     '<i class="material-icons">share</i> ' +
-                                '</a> ' +
+                                //'</a> ' +
                             '</button> ' +
                         '</div> ' +
                         '<span class="content content-date">Posted on '+ post_date +'</span> ' +
@@ -296,11 +296,11 @@ function createCards(result, container, forceAppend) {
                 '<label class="label-btn-action"><span class="badge">'+post_likes+'</span>Like</label> ' +
                 '<i class="material-icons icon-like">thumb_up</i> ' +
                 '</button> ' +
-                '<button type="button" class="btn btn-default button-action"> ' +
-                '<a href=""> ' +
+                '<button data-id="'+post_id+'" type="button" class="btn btn-default button-action btn-ishare"> ' +
+                //'<a href=""> ' +
                 '<label class="label-btn-action">Share</label> ' +
                 '<i class="material-icons">share</i> ' +
-                '</a> ' +
+                //'</a> ' +
                 '</button> ' +
                 '</div> ' +
                 '</div> ' +
@@ -397,6 +397,44 @@ function ajaxRefreshLikes() {
     });
 
 }
+
+
+function ajaxShareMessage(idMessage) {
+
+    var options = {};
+
+    options.data = {
+        idMessage: idMessage,
+    };
+
+
+    ajaxRequest("ajaxShareMessage", options, function (result) {
+
+        if(result != undefined && result) {
+            ajaxGetPosts();
+        } else {
+            console.log("Fail like message");
+        }
+
+    }, function () {
+        console.log("Error like message");
+    });
+
+}
+
+
+// Share Message listener
+$(document).on('click', '.btn-ishare', function () {
+
+    var idMessage = $(this).data('id');
+
+    if(idMessage != undefined && idMessage > 0) {
+        ajaxShareMessage(idMessage);
+    }
+
+});
+
+
 
 ajaxGetPosts();
 setInterval(ajaxGetPosts, 20000);

@@ -226,6 +226,17 @@ class mainController {
 		return context::NONE;
 	}
 
+	public static function ajaxShareMessage($request, $context) {
+
+		$user = $context->checkLogin();
+
+		$context->checkIsAjax($request);
+
+		$context->ajax = messageTable::shareMessage($user->id, $context->post->idMessage);
+
+		return context::NONE;
+	}
+
 
 	public static function ajaxGetChatMessages($request, $context) {
 

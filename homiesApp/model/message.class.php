@@ -45,7 +45,7 @@ class message{
 	 * @param $destinataire
 	 * @param $post
 	 */
-	public function __construct( $emetteur, $destinataire, $post ) {
+	public function __construct( $emetteur, $destinataire, $post) {
 		$this->emetteur     = $emetteur;
 		$this->destinataire = $destinataire;
 		$this->post         = $post;
@@ -94,6 +94,14 @@ class message{
 	public function getAime() {
 		return $this->aime;
 	}
+
+	/**
+	 * @param mixed $parent
+	 */
+	public function setParent( $parent ) {
+		$this->parent = $parent;
+	}
+
 
 
 }

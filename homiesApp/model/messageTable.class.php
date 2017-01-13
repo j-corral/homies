@@ -197,6 +197,46 @@ class messageTable {
 		return $message->aime;
 	}
 
+
+	/**
+	 * @param $idEmetteur
+	 * @param $idMessage
+	 *
+	 * @return bool
+	 */
+	public static function shareMessage($idEmetteur,$idMessage) {
+
+		$em = dbconnection::getInstance()->getEntityManager();
+
+		$utilisateurRepository = $em->getRepository('utilisateur');
+
+		$emetteur = $utilisateurRepository->findOneById($idEmetteur);
+
+		$messageRepository = $em->getRepository('message');
+
+		$message = $messageRepository->findOneById($idMessage);
+
+		if(!empty($emetteur) && !empty($message)) {
+
+			$messageEntity = new message(
+				$emetteur,
+				$message->destinataire,
+				$message->post
+			);
+
+			$messageEntity->setParent($message->parent);
+
+			$em->persist($messageEntity);
+			$em->flush();
+
+			return true;
+		}
+
+
+
+		return false;
+	}
+
 }
 
 ?>
