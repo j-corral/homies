@@ -66,7 +66,9 @@ class mainController {
 
 		$user = $context->checkLogin();
 
-		$context->messages = messageTable::getMessages( $user->id );
+		//$context->messages = messageTable::getMessages( $user->id );
+
+		$context->user = $user;
 
 		return context::SUCCESS;
 	}
@@ -210,6 +212,32 @@ class mainController {
 
 		$context->redirect( $context->link( 'showProfile' ) );
 		$context->setNotif( "Your message has been posted :)" );
+
+		return context::NONE;
+	}
+
+
+	public static function ajaxPostMessage($request, $context) {
+
+		$user = $context->checkLogin();
+
+		$context->checkIsAjax($request);
+
+		$picture = "";
+		if ( isset( $_FILES['file'] ) && ! empty( $_FILES['file'] ) ) {
+			$picture = $context->uploadPicture();
+		}
+
+		if ( strlen( $picture ) > 0 ) {
+			$picture = UPLOADS_LINK . '/' . $picture;
+		}
+
+		if(isset($context->post->message) && !empty($context->post->message)) {
+			$post = messageTable::postMessage( $user->id, $context->post->destinataire, $context->post->message, $picture );
+			$context->ajax = true;
+		} else {
+			$context->ajax = false;
+		}
 
 		return context::NONE;
 	}

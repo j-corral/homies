@@ -26,7 +26,7 @@ class post{
 	 * @param $texte
 	 */
 	public function __construct( $texte ) {
-		$this->texte = $texte;
+		$this->texte = nl2br($texte);
 		$this->date = new DateTime();
 	}
 

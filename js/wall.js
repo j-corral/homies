@@ -436,6 +436,48 @@ $(document).on('click', '.btn-ishare', function () {
 
 
 
+
+
+$("#postMessage").submit(function (e) {
+
+    e.preventDefault();
+
+    var msg = $("#message").val();
+    msg = $.trim(msg);
+
+    if (msg.length > 0 && msg != ' ') {
+
+        var formData = new FormData($("#postMessage")[0]);
+
+        var options = {};
+
+        options.contentType = false;
+        options.processData = false;
+
+        options.data = formData;
+
+
+        ajaxRequest("ajaxPostMessage", options, function (result) {
+
+            if (result != undefined && result) {
+
+                //console.log("result", result);
+                $("#message").val('');
+                $("#btn-remove").trigger('click');
+                ajaxGetPosts();
+            } else {
+                console.log("Fail post message");
+            }
+
+        }, function () {
+            console.log("Error post message");
+        });
+    }
+
+});
+
+
+
 ajaxGetPosts();
 setInterval(ajaxGetPosts, 20000);
 setInterval(ajaxRefreshLikes, 6000);
