@@ -67,6 +67,10 @@ class Serializor {
 		// Determine the next depth to use
 		$nextDepth = $depth - 1;
 
+		if(!is_object($anObject)) {
+			return $anObject;
+		}
+
 		// Lets get our Class Name
 		// @TODO: Making some assumptions that only objects get passed in, need error checking
 		$clazzName = get_class($anObject);

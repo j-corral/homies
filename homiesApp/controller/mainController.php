@@ -100,6 +100,20 @@ class mainController {
 	}
 
 
+	public static function ajaxRefreshLikes($request, $context) {
+
+		$user = $context->checkLogin();
+
+		$context->checkIsAjax($request);
+
+		$messages = messageTable::getMessagesLikes( $user->id, $context->post->last, $context->post->first );
+
+		$context->ajax = $messages;
+
+		return context::NONE;
+	}
+
+
 	public static function showProfile( $request, $context ) {
 
 		$user = $context->checkLogin();

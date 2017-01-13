@@ -360,5 +360,44 @@ function ajaxGetPreviousPosts() {
 
 }
 
+
+function ajaxRefreshLikes() {
+
+    var options = {};
+
+    options.data = {
+        last:last_post,
+        first:first_post
+    };
+
+
+    ajaxRequest("ajaxRefreshLikes", options, function (result) {
+
+        if(result != undefined) {
+
+            if(result.length > 0 && result[result.length - 1].id != undefined) {
+
+                result.forEach(function (item) {
+
+                    var like_id = '#like_' + item.id;
+
+                    if(item.aime != undefined && item.aime > 0) {
+                        $(like_id + ' .badge').html(item.aime);
+                    }
+
+
+                });
+
+            }
+
+        }
+
+    }, function () {
+        console.log("Error refresh likes");
+    });
+
+}
+
 ajaxGetPosts();
 setInterval(ajaxGetPosts, 20000);
+setInterval(ajaxRefreshLikes, 6000);

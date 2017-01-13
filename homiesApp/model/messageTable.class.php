@@ -68,6 +68,36 @@ class messageTable {
 
 	/**
 	 * @param $id
+	 * @param $last
+	 * @param $first
+	 *
+	 * @return array
+	 */
+	public static function getMessagesLikes($id, $last = 0, $first = 0){
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$messageRepository = $em->getRepository('message');
+
+		$last = (int) $last;
+		$first = (int) $first;
+
+		$order = 'DESC';
+
+		$messages = $messageRepository->createQueryBuilder('m')
+		                              ->select(array('m.id', 'm.aime'))
+		                              ->where('m.id <= ' . $last)
+									  ->andWhere('m.id >= ' . $first)
+									  ->andWhere('m.aime > ' . 0)
+		                              ->orderBy('m.id', $order)
+		                              ->getQuery()
+		                              ->getResult();
+
+		return $messages;
+	}
+
+
+	/**
+	 * @param $id
 	 *
 	 * @return mixed
 	 */
