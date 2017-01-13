@@ -2,8 +2,19 @@
  * Created by jonathan on 09/01/17.
  */
 var last_post = 0;
+var first_post = 0;
+var updating = false;
 
-// alert('test');
+// lazy load
+$(window).scroll(function() {
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+        //console.log(first_post);
+        if(!updating) {
+            ajaxGetPreviousPosts();
+        }
+    }
+});
 
 function ajaxGetPosts() {
 
@@ -17,9 +28,18 @@ function ajaxGetPosts() {
 
             if(result.length > 0 && result[result.length - 1].id != undefined) {
 
-                last_post = result[result.length - 1].id;
+
+
+                //console.log("last post id : ", last_post);
 
                 createCards(result, $("#posts"));
+
+                if(last_post == 0) {
+                    last_post = result[0].id;
+                    first_post = last_post;
+                } else {
+                    last_post = result[result.length - 1].id;
+                }
 
             } else {
                 //$("#posts").append("No posts");
@@ -34,7 +54,9 @@ function ajaxGetPosts() {
 }
 
 
-function createCards(result, container) {
+function createCards(result, container, forceAppend) {
+
+    var forceAppend = forceAppend || false;
 
     result.forEach(function (item) {
 
@@ -60,8 +82,14 @@ function createCards(result, container) {
 
         if(item.parent != undefined) {
             parent_id = item.parent.id;
-            parent_firstname = item.parent.prenom;
-            parent_lastname =   item.parent.nom;
+
+            if(item.parent.prenom != undefined) {
+                parent_firstname = item.parent.prenom;
+            }
+
+            if(item.parent.nom != undefined) {
+                parent_lastname =   item.parent.nom;
+            }
 
             if (item.parent.avatar != undefined && item.parent.avatar.length > 0) {
 
@@ -99,8 +127,14 @@ function createCards(result, container) {
         if(item.emetteur != undefined) {
 
             e_id = item.emetteur.id;
-            e_firstname = item.emetteur.prenom;
-            e_lastname =   item.emetteur.nom;
+
+            if(item.emetteur.prenom != undefined) {
+                e_firstname = ucfirst(item.emetteur.prenom);
+            }
+
+            if(item.emetteur.nom != undefined) {
+                e_lastname =   ucfirst(item.emetteur.nom);
+            }
 
             if (item.emetteur.avatar != undefined && item.emetteur.avatar.length > 0) {
 
@@ -117,8 +151,14 @@ function createCards(result, container) {
         if(item.destinataire != undefined) {
 
             r_id = item.destinataire.id;
-            r_firstname = item.destinataire.prenom;
-            r_lastname =   item.destinataire.nom;
+
+            if(item.destinataire.prenom != undefined) {
+                r_firstname = ucfirst(item.destinataire.prenom);
+            }
+
+            if(item.destinataire.nom != undefined) {
+                r_lastname =   ucfirst(item.destinataire.nom);
+            }
 
             if (item.destinataire.avatar != undefined && item.destinataire.avatar.length > 0) {
 
@@ -244,7 +284,7 @@ function createCards(result, container) {
                 '<span class="text-bold">'+r_firstname + ' ' + r_lastname +'</span> ' +
                 '</a> ' +
                 '</div> ' +
-                '<span class="content grey-date">'+post_date+'</span> ' +
+                '<span class="content grey-date">Posted on '+post_date+'</span> ' +
                 '<div class="card-description"> ' +
                 '<h3>'+post_text+'</h3> ' +
                 '</div> ' +
@@ -252,7 +292,7 @@ function createCards(result, container) {
                 '</div> ' +
                 '<div class="div-btn-actions-shared"> ' +
                 '<div class="content btn-action btn-group content-btn-actions-shared" role="group" aria-label="..."> ' +
-                '<button id="like_'+post_id+'" type="button" class="btn btn-default button-action"> ' +
+                '<button id="like_'+post_id+'" type="button" class="btn btn-default button-action btn-like"> ' +
                 '<label class="label-btn-action"><span class="badge">'+post_likes+'</span>Like</label> ' +
                 '<i class="material-icons icon-like">thumb_up</i> ' +
                 '</button> ' +
@@ -269,12 +309,56 @@ function createCards(result, container) {
 
         }
 
-        container.prepend(html);
+
+        if(last_post == 0 || forceAppend) {
+            //console.log("append: " + item.id);
+            container.append(html);
+        } else {
+            //console.log("prepend: " + item.id);
+            container.prepend(html);
+        }
+
+
 
     });
 
 
 }
 
+
+function ajaxGetPreviousPosts() {
+
+    updating = true;
+
+    var options = {};
+
+    options.data = {last:first_post};
+
+    options.async = false;
+
+    ajaxRequest("ajaxGetPreviousPosts", options, function (result) {
+
+        if(result != undefined) {
+
+            if(result.length > 0 && result[result.length - 1].id != undefined) {
+
+                //console.log("first post id : ", first_post);
+
+                createCards(result, $("#posts"), true);
+
+                first_post = result[result.length - 1].id;
+
+            }
+
+        }
+
+    }, function () {
+        console.log("Error get posts");
+    });
+
+    updating = false;
+
+}
+
 ajaxGetPosts();
-setInterval(ajaxGetPosts, 5000);
+setInterval(ajaxGetPosts, 20000);

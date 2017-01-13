@@ -66,6 +66,10 @@ function initChatEvents() {
     $('#chat-fake').click(function () {
         $("#chat-fake").delay(100).hide(0);
         $("#chat-global").slideDown("slow");
+
+        height = parseInt($("#chat-messages")[0].scrollHeight);
+        $("#chat-messages").animate({scrollTop: height}, 0);
+
     });
 
 
@@ -151,8 +155,14 @@ function ajaxGetMessages() {
 
                     if (item.emetteur != undefined) {
                         id = item.emetteur.id;
-                        prenom = item.emetteur.prenom;
-                        nom =   item.emetteur.nom;
+
+                        if(item.emetteur.prenom != undefined) {
+                            prenom = ucfirst(item.emetteur.prenom);
+                        }
+
+                        if(item.emetteur.nom != undefined) {
+                            nom =   ucfirst(item.emetteur.nom);
+                        }
 
                         if (item.emetteur.avatar != undefined && item.emetteur.avatar.length > 0) {
 
@@ -248,8 +258,8 @@ initChat();
 initChatEvents();
 ajaxGetMessages();
 
-$('#chat-fake').trigger('click');
+//$('#chat-fake').trigger('click');
 
-setInterval(ajaxGetMessages, 5000);
+setInterval(ajaxGetMessages, 6000);
 
 

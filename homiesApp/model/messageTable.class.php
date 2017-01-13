@@ -19,15 +19,48 @@ class messageTable {
 
 		$last = (int) $last;
 
+		$order = 'ASC';
+
+		if($last == 0) {
+			$order = 'DESC';
+		}
+
 		/*$messages = $messageRepository->findBy(array(), array(
 			'id' => 'desc'
 		));*/
 
 		$messages = $messageRepository->createQueryBuilder('m')
 		                        ->where('m.id > ' . $last)
-								->orderBy('m.id', 'ASC')
+								->orderBy('m.id', $order)
+								->setMaxResults( 10 )
 		                        ->getQuery()
 		                        ->getResult();
+
+		return $messages;
+	}
+
+
+	/**
+	 * @param $id
+	 * @param $last
+	 *
+	 * @return array
+	 */
+	public static function getPreviousMessages($id, $last = 0){
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$messageRepository = $em->getRepository('message');
+
+		$last = (int) $last;
+
+		$order = 'DESC';
+
+		$messages = $messageRepository->createQueryBuilder('m')
+		                              ->where('m.id < ' . $last)
+		                              ->orderBy('m.id', $order)
+		                              ->setMaxResults( 20 )
+		                              ->getQuery()
+		                              ->getResult();
 
 		return $messages;
 	}

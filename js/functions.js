@@ -48,6 +48,10 @@ function escapeHtml(text) {
 
 
 function urlExists(testUrl) {
+
+    // todo fix issue caused by external links
+    return true;
+
     var http = $.ajax({
         type:"HEAD", //Not get
         url: testUrl,
@@ -57,3 +61,20 @@ function urlExists(testUrl) {
     //console.log(http);
     return http.status==200;
 }
+
+
+/**
+ * Author : https://jsfiddle.net/gabrieleromanato/vBBnR/
+ * @param str
+ * @returns {string}
+ */
+function ucfirst(str, force) {
+
+    var force = force || true;
+
+    str=force ? str.toLowerCase() : str;
+    return str.replace(/(\b)([a-zA-Z])/,
+        function(firstLetter){
+            return   firstLetter.toUpperCase();
+        });
+};

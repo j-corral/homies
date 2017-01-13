@@ -86,6 +86,20 @@ class mainController {
 	}
 
 
+	public static function ajaxGetPreviousPosts($request, $context) {
+
+		$user = $context->checkLogin();
+
+		$context->checkIsAjax($request);
+
+		$messages = messageTable::getPreviousMessages( $user->id, $context->post->last );
+
+		$context->ajax = $messages;
+
+		return context::NONE;
+	}
+
+
 	public static function showProfile( $request, $context ) {
 
 		$user = $context->checkLogin();
